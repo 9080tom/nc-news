@@ -8,13 +8,14 @@ import { getArticles } from "../components/api";
 class Articles extends Component {
   state = {
     order: "comment_count",
-    articles: [],
-    topicsFilter: ""
+    articles: []
   };
   render() {
     return (
       <div>
-        <ArticleLinkBar /> <TopicBar />
+        <span className="filters">
+          <ArticleLinkBar /> <TopicBar />
+        </span>
         {this.state.articles.map(article => {
           return <Article key={article.article_id} article={article} />;
         })}
@@ -45,7 +46,6 @@ class Articles extends Component {
         console.log(error);
       });
   };
-  updateFilter = filter => this.setState({ topicsFilter: filter });
 }
 
 export default Articles;

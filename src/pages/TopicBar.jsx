@@ -7,18 +7,16 @@ class TopicBar extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="filter">
         <span>Filter topics</span>
-        <select>
-          <option>All</option>
-          {this.state.topics.map(topic => {
-            return (
-              <option key={`${topic.slug}`} value={`${topic.slug}`}>
-                {`${topic.slug}`}
-              </option>
-            );
-          })}
-        </select>
+        <div>All</div>
+        {this.state.topics.map(topic => {
+          return (
+            <div key={`${topic.slug}`} value={`${topic.slug}`}>
+              {`${topic.slug}`}
+            </div>
+          );
+        })}
       </div>
     );
   }
@@ -32,6 +30,10 @@ class TopicBar extends Component {
         console.log(error);
       });
   }
+  submitFilter = e => {
+    console.log(e);
+    this.props.updateFilter();
+  };
 }
 
 export default TopicBar;

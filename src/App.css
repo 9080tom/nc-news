@@ -16,3 +16,9 @@
 #comment {
   border-bottom: 20px;
 }
+
+.filters {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+}
