@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { getTopics } from "../components/api";
 
 class TopicBar extends Component {
   state = {
@@ -8,8 +8,9 @@ class TopicBar extends Component {
   render() {
     return (
       <div>
+        <span>Filter topics</span>
         <select>
-          <option>Home</option>
+          <option>All</option>
           {this.state.topics.map(topic => {
             return (
               <option key={`${topic.slug}`} value={`${topic.slug}`}>
@@ -22,10 +23,8 @@ class TopicBar extends Component {
     );
   }
   componentDidMount() {
-    axios
-      .get("https://quiet-wave-80549.herokuapp.com/api/topics")
+    getTopics()
       .then(({ data }) => {
-        console.log(data);
         this.setState({ topics: data.topics });
       })
       .catch(function(error) {

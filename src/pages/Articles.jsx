@@ -1,32 +1,45 @@
 import React, { Component } from "react";
 import Article from "./Article";
-import axios from "axios";
-import { Link } from "@reach/router";
+import ArticleLinkBar from "../components/articleLinkBar";
+import { getArticles } from "../components/api";
 
 class Articles extends Component {
   state = {
-    order: "comment_count"
+    order: "comment_count",
+    articles: []
   };
   render() {
     return (
       <div>
-        <div>Sort By</div>
-        <Link to="/">Top</Link> | <Link to="/new">new</Link> |{" "}
-        <Link to="/MostDiscussed">Most Discussed</Link>
-        <Article />
+        <ArticleLinkBar />
+        {this.state.articles.map(article => {
+          return <Article key={article.article_id} article={article} />;
+        })}
       </div>
     );
   }
+  componentDidUpdate(prevProp) {
+    if (prevProp !== this.props) this.callApi();
+  }
   componentDidMount() {
-    axios
-      .get(
-        `https://quiet-wave-80549.herokuapp.com/api/articles?sort_by=${
-          this.state.order
-        }`
-      )
-      .then(({ data }) => {
-        console.log(data);
-        this.setState({ topics: data.topics });
+    this.callApi();
+  }
+  callApi() {
+    const page = {
+      new: { sort_by: "created_at" },
+      MostDiscussed: { sort_by: "created_at" }
+    };
+    let query = "";
+    if (this.props.sort === undefined) {
+      query = undefined;
+    } else {
+      query = page[this.props.sort];
+    }
+
+    getArticles(query)
+      .then(articles => {
+        console.log(articles);
+        this.setState({ articles });
       })
       .catch(function(error) {
         // handle error
@@ -36,25 +49,3 @@ class Articles extends Component {
 }
 
 export default Articles;
-
-// class TopicBar extends Component {
-//   state = {
-//     topics: []
-//   };
-//   render() {
-//     return (
-//       <div>
-//         <select>
-//           <option>Home</option>
-//           {this.state.topics.map(topic => {
-//             return (
-//               <option key={`${topic.slug}`} value={`${topic.slug}`}>
-//                 {`${topic.slug}`}
-//               </option>
-//             );
-//           })}
-//         </select>
-//       </div>
-//     );
-//   }
-// }

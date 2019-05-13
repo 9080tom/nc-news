@@ -1,5 +1,6 @@
 import React from "react";
 import SearchBar from "../components/SearchBar";
+import TopicBar from "./TopicBar";
 import Login from "../components/Login";
 import { Link } from "@reach/router";
 
@@ -11,6 +12,7 @@ const Header = () => (
         News
       </Link>
     </div>
+    <TopicBar />
     <SearchBar />
     <Login />
   </div>
