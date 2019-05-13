@@ -1,6 +1,9 @@
 import React from "react";
 import LoginPage from "../pages/LoginPage";
 import Articles from "./Articles";
+import ArticlePage from "./ArticlePage";
+import NotFound from "./NotFound";
+
 import { Router } from "@reach/router";
 
 const MainPage = () => (
@@ -8,7 +11,9 @@ const MainPage = () => (
     <Router>
       <Articles path="/" />
       <Articles path="/home/:sort" />
+      <ArticlePage path="/articles/:article_id" />
       <LoginPage path="/login" />
+      <NotFound default />
     </Router>
   </div>
 );

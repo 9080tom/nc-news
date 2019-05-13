@@ -1,8 +1,11 @@
 import React from "react";
+import { Link } from "@reach/router";
 
 const Article = props => (
   <div>
-    <h1>{props.article.title}</h1>
+    <Link to={`/articles/${props.article.article_id}`}>
+      <h1>{props.article.title}</h1>
+    </Link>
     <span>author : {props.article.author}</span>
     <span> created at : {props.article.created_at}</span>
     <span> comment count : {props.article.comment_count}</span>

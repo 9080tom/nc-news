@@ -13,5 +13,19 @@ export const getArticles = query => {
 };
 
 export const getTopics = () => {
-  return axios.get("https://quiet-wave-80549.herokuapp.com/api/topics");
+  return axios.get(url + "topics");
+};
+
+export const getArticle = id => {
+  return axios.get(url + `articles/${id}`).then(({ data: { article } }) => {
+    return article;
+  });
+};
+
+export const getArticleComments = id => {
+  return axios
+    .get(url + `articles/${id}/comments`)
+    .then(({ data: { comments } }) => {
+      return comments;
+    });
 };

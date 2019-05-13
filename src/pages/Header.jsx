@@ -12,7 +12,6 @@ const Header = () => (
         News
       </Link>
     </div>
-    <TopicBar />
     <SearchBar />
     <Login />
   </div>
