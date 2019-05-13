@@ -3,17 +3,20 @@ import axios from "axios";
 
 class TopicBar extends Component {
   state = {
-    topics: ""
+    topics: []
   };
   render() {
     return (
       <div>
-        <div>options from backend</div>
         <select>
-          <option value="volvo">mitch</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
+          <option>Home</option>
+          {this.state.topics.map(topic => {
+            return (
+              <option key={`${topic.slug}`} value={`${topic.slug}`}>
+                {`${topic.slug}`}
+              </option>
+            );
+          })}
         </select>
       </div>
     );
@@ -23,7 +26,7 @@ class TopicBar extends Component {
       .get("https://quiet-wave-80549.herokuapp.com/api/topics")
       .then(({ data }) => {
         console.log(data);
-        this.setState({ topics: data.students });
+        this.setState({ topics: data.topics });
       })
       .catch(function(error) {
         // handle error
