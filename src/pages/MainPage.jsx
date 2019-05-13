@@ -1,13 +1,16 @@
 import React from "react";
-
+import LoginPage from "../pages/LoginPage";
 import TopicBar from "./TopicBar";
 import Articles from "./Articles";
+import { Router } from "@reach/router";
 
 const MainPage = () => (
-  <div>
-    <h1>Main Page</h1>
+  <div className="MainPage">
     <TopicBar />
-    <Articles />
+    <Router>
+      <Articles path="/" />
+      <LoginPage path="/login" />
+    </Router>
   </div>
 );
 

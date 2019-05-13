@@ -1,8 +1,11 @@
 import React from "react";
+import { Link } from "@reach/router";
 
 const Login = () => (
   <div>
-    <div>Login</div>
+    <Link to="/login">
+      <button>Login</button>
+    </Link>
   </div>
 );
 
