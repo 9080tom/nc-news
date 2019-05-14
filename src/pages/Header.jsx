@@ -12,10 +12,14 @@ const Header = props => (
       </Link>
     </div>
     <SearchBar />
-    {console.log(props.loggedInUser)}
-    {props.loggedInUser ? (
+    {props.loggedInUser.username ? (
       <div>
-        logged in as {props.loggedInUser}
+        logged in as {props.loggedInUser.username}
+        <img
+          src={props.loggedInUser.avatar_url}
+          alt="avatar"
+          className="avatar"
+        />
         <Login loggedIn={false} />
       </div>
     ) : (

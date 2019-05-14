@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getUser } from "../components/api";
+import { navigate } from "@reach/router";
 
 class LoginPage extends Component {
   state = {
@@ -10,6 +11,13 @@ class LoginPage extends Component {
     return (
       <div>
         {this.props.loggedInUser ? (
+          <div>
+            <h1>Are you sure you want to log out?</h1>
+            <form>
+              <button>Logout</button>
+            </form>
+          </div>
+        ) : (
           <div>
             <h1>Login Page</h1>
             <form onSubmit={this.submitUserName}>
@@ -26,13 +34,6 @@ class LoginPage extends Component {
               <button>Login</button>
             </form>
           </div>
-        ) : (
-          <div>
-            <h1>Are you sure you want to log out?</h1>
-            <form>
-              <button>Logout</button>
-            </form>
-          </div>
         )}
 
         {this.state.error && <div>Invalid User</div>}
@@ -47,7 +48,8 @@ class LoginPage extends Component {
     event.preventDefault();
     getUser(this.state.username)
       .then(user => {
-        this.props.logInUser(user.username);
+        this.props.logInUser(user);
+        navigate("/");
       })
       .catch(() => this.setState({ error: true }));
   };

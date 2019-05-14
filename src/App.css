@@ -46,3 +46,8 @@
   border-style: solid;
   margin: 2em;
 }
+
+.avatar {
+  height: 90%;
+  width: 12%;
+}

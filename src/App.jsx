@@ -4,7 +4,7 @@ import Header from "./pages/Header";
 import MainPage from "./pages/MainPage";
 class App extends Component {
   state = {
-    loggedInUser: ""
+    loggedInUser: {}
   };
   render() {
     return (
@@ -12,14 +12,14 @@ class App extends Component {
         <Header loggedInUser={this.state.loggedInUser} />
         <MainPage
           className="MainPage"
-          loggedInUser={this.state.loggedInUser}
+          loggedInUser={this.state.loggedInUser.username}
           logInUser={this.logInUser}
         />
       </div>
     );
   }
-  logInUser = userName => {
-    this.setState({ loggedInUser: userName });
+  logInUser = user => {
+    this.setState({ loggedInUser: user });
   };
 }
 
