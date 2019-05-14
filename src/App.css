@@ -29,7 +29,8 @@
 }
 
 .coding {
-  background-image: url("./images/vector-random-numbers-matrix-background.jpg");
+  background-image: url("./images/vector-computer-illustration-set.jpg");
+  background-size: 500px 500px;
 }
 
 .football {
@@ -39,9 +40,9 @@
   background-image: url("./images/vector-spanish-food-pattern.jpg");
 }
 
-.article {
+.boxed {
   background-color: gainsboro;
   border: black;
   border-style: solid;
-  margin-top: 5px;
+  margin: 3em;
 }

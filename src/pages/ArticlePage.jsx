@@ -11,18 +11,21 @@ class ArticlePage extends Component {
       return <div>Loading....</div>;
     } else {
       return (
-        <div>
-          <h1>{this.state.article.title}</h1>
-          <span>author : {this.state.article.author}</span>
-          <span> Topic : {this.state.article.topic}</span>
-          <br />
-          <br />
-          <span> {this.state.article.body}</span>
-          <br />
-          <br />
-          <span> votes : {this.state.article.votes}</span>
-          <span> created at : {this.state.article.created_at}</span>
-          <h3> comment count : {this.state.article.comment_count}</h3>
+        <div className={this.state.article.topic}>
+          <div className="boxed">
+            <h1>{this.state.article.title}</h1>
+            <span>author : {this.state.article.author}</span>
+            <span> Topic : {this.state.article.topic}</span>
+            <br />
+            <br />
+            <span> {this.state.article.body}</span>
+            <br />
+            <br />
+            <span> votes : {this.state.article.votes}</span>
+            <span> created at : {this.state.article.created_at}</span>
+            <h3> comment count : {this.state.article.comment_count}</h3>
+          </div>
+
           <ArticleComments article_id={this.state.article.article_id} />
         </div>
       );
