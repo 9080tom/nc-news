@@ -3,7 +3,7 @@ import SearchBar from "../components/SearchBar";
 import Login from "../components/Login";
 import { Link } from "@reach/router";
 
-const Header = () => (
+const Header = props => (
   <div className="header">
     <div>
       <Link to="/">
@@ -12,7 +12,18 @@ const Header = () => (
       </Link>
     </div>
     <SearchBar />
-    <Login />
+    {console.log(props.loggedInUser)}
+    {props.loggedInUser ? (
+      <div>
+        logged in as {props.loggedInUser}
+        <Login loggedIn={false} />
+      </div>
+    ) : (
+      <div>
+        logged out
+        <Login loggedIn={true} />
+      </div>
+    )}
   </div>
 );
 

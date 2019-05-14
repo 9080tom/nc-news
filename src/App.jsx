@@ -4,13 +4,17 @@ import Header from "./pages/Header";
 import MainPage from "./pages/MainPage";
 class App extends Component {
   state = {
-    loggedInUser: undefined
+    loggedInUser: ""
   };
   render() {
     return (
       <div className="App">
-        <Header />
-        <MainPage className="MainPage" />
+        <Header loggedInUser={this.state.loggedInUser} />
+        <MainPage
+          className="MainPage"
+          loggedInUser={this.state.loggedInUser}
+          logInUser={this.logInUser}
+        />
       </div>
     );
   }

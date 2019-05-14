@@ -29,3 +29,11 @@ export const getArticleComments = id => {
       return comments;
     });
 };
+
+export const getUser = username => {
+  return axios.get(url + `users/${username}`).then(({ data: { user } }) => {
+    console.log(user);
+    return user;
+  });
+};
+//

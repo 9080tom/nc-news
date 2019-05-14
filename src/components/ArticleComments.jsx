@@ -11,7 +11,7 @@ class ArticleComments extends Component {
     } else {
       return this.state.comments.map(comment => {
         return (
-          <div id="comment" key={comment.comment_id}>
+          <div id="comment" key={comment.comment_id} className="boxed">
             <h1>{comment.title}</h1>
             <span>author : {comment.author}</span>
             <p> {comment.body}</p>

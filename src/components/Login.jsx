@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-const Login = () => (
+const Login = props => (
   <div>
     <Link to="/login">
-      <button>Login</button>
+      {props.loggedIn ? <button>Login</button> : <button>Logout</button>}{" "}
     </Link>
   </div>
 );
