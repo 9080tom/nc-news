@@ -8,12 +8,15 @@ class TopicBar extends Component {
   render() {
     return (
       <div className="filter">
-        <span>Filter topics</span>
+        <span>Topics</span>
         <div>All</div>
         {this.state.topics.map(topic => {
           return (
-            <div key={`${topic.slug}`} value={`${topic.slug}`}>
-              {`${topic.slug}`}
+            <div
+              key={this.ucfirst(topic.slug)}
+              value={this.ucfirst(topic.slug)}
+            >
+              {this.ucfirst(topic.slug)}
             </div>
           );
         })}
@@ -33,6 +36,9 @@ class TopicBar extends Component {
   submitFilter = e => {
     console.log(e);
     this.props.updateFilter();
+  };
+  ucfirst = string => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   };
 }
 

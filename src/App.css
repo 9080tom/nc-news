@@ -10,7 +10,10 @@
 
 .MainPage {
   display: flex;
-  background-color: rgb(192, 192, 192);
+  background-color: gainsboro;
+  /* 
+  background-image: url("./markus-spiske-1171520-unsplash.jpg");
+  width: 50%; */
 }
 
 #comment {
