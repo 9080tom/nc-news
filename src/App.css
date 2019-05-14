@@ -11,6 +11,8 @@
 .MainPage {
   display: flex;
   background-color: gainsboro;
+  justify-content: stretch;
+
   /* 
   background-image: url("./markus-spiske-1171520-unsplash.jpg");
   width: 50%; */
@@ -24,4 +26,22 @@
   display: flex;
   justify-content: center;
   justify-content: space-between;
+}
+
+.coding {
+  background-image: url("./images/vector-random-numbers-matrix-background.jpg");
+}
+
+.football {
+  background-image: url("./images/istockphoto-904154438-612x612.jpg");
+}
+.cooking {
+  background-image: url("./images/vector-spanish-food-pattern.jpg");
+}
+
+.article {
+  background-color: gainsboro;
+  border: black;
+  border-style: solid;
+  margin-top: 5px;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 
 const Article = props => (
-  <div>
+  <div className="article">
     <Link to={`/articles/${props.article.article_id}`}>
       <h1>{props.article.title}</h1>
     </Link>

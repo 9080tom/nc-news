@@ -12,7 +12,7 @@ class Articles extends Component {
   };
   render() {
     return (
-      <div>
+      <div className={this.props.topic}>
         <span className="filters">
           <ArticleLinkBar /> <TopicBar />
         </span>
@@ -31,12 +31,15 @@ class Articles extends Component {
   callApi = () => {
     const page = {
       new: { sort_by: "created_at" },
-      MostDiscussed: { sort_by: "comment_count" },
-      Top: { sort_by: "votes" }
+      mostDiscussed: { sort_by: "comment_count" },
+      top: { sort_by: "votes" }
     };
     let query = page.top;
     if (this.props.sort !== undefined) {
       query = page[this.props.sort];
+    }
+    if (this.props.topic) {
+      query.topic = this.props.topic;
     }
     getArticles(query)
       .then(articles => {

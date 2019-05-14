@@ -15,11 +15,8 @@ class TopicBar extends Component {
         </Link>
         {this.state.topics.map(topic => {
           return (
-            <Link to={`/home/${this.ucfirst(topic.slug)}`}>
-              <div
-                key={this.ucfirst(topic.slug)}
-                value={this.ucfirst(topic.slug)}
-              >
+            <Link to={`/${topic.slug}`} key={this.ucfirst(topic.slug)}>
+              <div value={this.ucfirst(topic.slug)}>
                 {this.ucfirst(topic.slug)}
               </div>
             </Link>

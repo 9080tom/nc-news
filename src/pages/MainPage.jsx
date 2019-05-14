@@ -10,6 +10,7 @@ const MainPage = () => (
   <div className="MainPage">
     <Router>
       <Articles path="/" />
+      <Articles path="/:topic" />
       <Articles path="/home/:sort" />
       <ArticlePage path="/articles/:article_id" />
       <LoginPage path="/login" />
@@ -19,3 +20,5 @@ const MainPage = () => (
 );
 
 export default MainPage;
+
+//time ago?????
