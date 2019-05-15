@@ -83,3 +83,7 @@
   height: 5em;
   width: 5em;
 }
+
+.error {
+  color: red;
+}

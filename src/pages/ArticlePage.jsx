@@ -4,6 +4,7 @@ import ArticleComments from "../components/ArticleComments";
 import Comment from "../components/Comment";
 import { time_elapsed_string } from "../components/timeAgo";
 import { patchArticle } from "../components/api";
+import { Voter } from "../components/voter";
 
 class ArticlePage extends Component {
   state = {
@@ -18,35 +19,27 @@ class ArticlePage extends Component {
         <div className={this.state.article.topic}>
           {this.state.article.topic && <h3>{this.state.article.topic}</h3>}
           <div className="boxed">
-            <h1>{this.state.article.title}</h1>
-            <span>author : {this.state.article.author}</span>
-            <span> Topic : {this.state.article.topic}</span>
-            <br />
-            <br />
-            <span> {this.state.article.body}</span>
-            <br />
-            <br />
-            <span>
+            <div>
               {" "}
-              votes : {this.state.article.votes + this.state.votes}
-              <button
-                disabled={this.state.votes === 1}
-                onClick={() => this.handleVote(1)}
-              >
-                like
-              </button>
-              <button
-                disabled={this.state.votes === -1}
-                onClick={() => this.handleVote(-1)}
-              >
-                dislike
-              </button>
-            </span>
-            <span>
-              {" "}
-              created : {time_elapsed_string(this.state.article.created_at)}
-            </span>
-            <h3> comment count : {this.state.article.comment_count}</h3>
+              <h1>{this.state.article.title}</h1>
+              <span>author : {this.state.article.author}</span>
+              <span> Topic : {this.state.article.topic}</span>
+              <br />
+              <br />
+              <span> {this.state.article.body}</span>
+              <br />
+              <br />
+              <span>
+                {" "}
+                created : {time_elapsed_string(this.state.article.created_at)}
+              </span>
+              <h3> comment count : {this.state.article.comment_count}</h3>
+            </div>
+            <Voter
+              stateVotes={this.state.article.votes}
+              votes={this.state.votes}
+              handleVote={this.handleVote}
+            />
           </div>
           <Comment
             loggedInUser={this.props.loggedInUser}

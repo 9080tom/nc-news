@@ -9,17 +9,16 @@ class TopicBar extends Component {
   render() {
     return (
       <div className="filter">
-        <span>Topics</span>
+        <span>Topics </span>
         <Link to="/">
           <span>All</span>
         </Link>
         {this.state.topics.map(topic => {
           return (
-            <Link to={`/${topic.slug}`} key={this.ucfirst(topic.slug)}>
-              <span value={this.ucfirst(topic.slug)}>
-                {" | "} {this.ucfirst(topic.slug)}
-              </span>
-            </Link>
+            <span key={this.ucfirst(topic.slug)}>
+              {" | "}
+              <Link to={`/${topic.slug}`}>{this.ucfirst(topic.slug)}</Link>
+            </span>
           );
         })}
       </div>
