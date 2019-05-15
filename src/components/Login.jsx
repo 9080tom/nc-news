@@ -3,7 +3,11 @@ import { Link } from "@reach/router";
 
 const Login = props => (
   <Link to="/login">
-    {props.loggedIn ? <button>Login</button> : <button>Logout</button>}{" "}
+    {props.loggedIn ? (
+      <button className="buttons">Login</button>
+    ) : (
+      <button className="buttons">Logout</button>
+    )}{" "}
   </Link>
 );
 

@@ -1,14 +1,14 @@
 import React from "react";
 import SearchBar from "../components/SearchBar";
 import Login from "../components/Login";
+import NcNews from "../images/logo.png";
 import { Link } from "@reach/router";
 
 const Header = props => (
   <div className="header">
     <div>
       <Link to="/">
-        NC <br />
-        News
+        <img src={NcNews} alt="logo" className="logo" />
       </Link>
     </div>
     <SearchBar />
