@@ -1,38 +1,70 @@
 import React, { Component } from "react";
 import { getArticleComments } from "../components/api";
 import { time_elapsed_string } from "../components/timeAgo";
+import PageChanger from "./PageChanger";
 
 class ArticleComments extends Component {
   state = {
-    comments: []
+    comments: [],
+    p: 1
   };
   render() {
     if (this.state.comments.length === 0) {
       return <div>Loading....</div>;
     } else {
-      return this.state.comments.map(comment => {
-        return (
-          <div id="comment" key={comment.comment_id} className="boxed">
-            <h1>{comment.title}</h1>
-            <span>author : {comment.author}</span>
-            <p> {comment.body}</p>
-            <span> votes : {comment.votes}</span>
-            <span> created : {time_elapsed_string(comment.created_at)}</span>
-          </div>
-        );
-      });
+      return (
+        <div>
+          {this.state.comments.map(comment => {
+            return (
+              <div id="comment" key={comment.comment_id} className="boxed">
+                <h1>{comment.title}</h1>
+                <span>author : {comment.author}</span>
+                <p> {comment.body}</p>
+                <span> votes : {comment.votes}</span>
+                <span>
+                  {" "}
+                  created : {time_elapsed_string(comment.created_at)}
+                </span>
+              </div>
+            );
+          })}
+          <PageChanger
+            p={this.state.p}
+            changePage={this.changePage}
+            total={this.props.total_count}
+          />
+        </div>
+      );
     }
   }
 
   componentDidMount() {
-    getArticleComments(this.props.article_id)
+    this.getComments();
+  }
+  componentDidUpdate(prevProp, prevState) {
+    if (prevState.p !== this.state.p) {
+      this.getComments(this.state.p);
+    }
+  }
+  getComments = p => {
+    getArticleComments(this.props.article_id, { p })
       .then(comments => {
         this.setState({ comments });
       })
       .catch(function(error) {
-        // handle error
         console.log(error);
       });
-  }
+  };
+  changePage = (number, type) => {
+    if (type === "replace") {
+      this.setState(() => {
+        return { p: number };
+      });
+    } else {
+      this.setState(prevState => {
+        return { p: prevState.p + number };
+      });
+    }
+  };
 }
 export default ArticleComments;

@@ -4,13 +4,14 @@
 
 .header {
   display: flex;
-  background-color: gray;
+  background-color: rgb(60, 59, 60);
   justify-content: space-between;
+  border-bottom: black solid;
 }
 
 .MainPage {
   display: flex;
-  background-color: rgb(119, 62, 119);
+  background-color: rgb(60, 59, 60);
   justify-content: stretch;
 }
 
@@ -37,7 +38,7 @@
 }
 
 .boxed {
-  background-color: gainsboro;
+  background-color: rgba(220, 220, 220, 0.466);
   border-radius: 25px;
   border: black;
   border-style: solid;

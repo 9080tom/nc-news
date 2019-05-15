@@ -52,7 +52,10 @@ class ArticlePage extends Component {
             loggedInUser={this.props.loggedInUser}
             article_id={this.state.article.article_id}
           />
-          <ArticleComments article_id={this.state.article.article_id} />
+          <ArticleComments
+            total_count={this.state.article.comment_count}
+            article_id={this.state.article.article_id}
+          />
         </div>
       );
     }

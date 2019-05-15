@@ -22,9 +22,9 @@ export const getArticle = id => {
   });
 };
 
-export const getArticleComments = id => {
+export const getArticleComments = (id, page) => {
   return axios
-    .get(url + `articles/${id}/comments`)
+    .get(url + `articles/${id}/comments`, { params: page })
     .then(({ data: { comments } }) => {
       return comments;
     });
