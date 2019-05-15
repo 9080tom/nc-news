@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getArticleComments } from "../components/api";
+import { time_elapsed_string } from "../components/timeAgo";
 
 class ArticleComments extends Component {
   state = {
@@ -16,7 +17,7 @@ class ArticleComments extends Component {
             <span>author : {comment.author}</span>
             <p> {comment.body}</p>
             <span> votes : {comment.votes}</span>
-            <span> created at : {comment.created_at}</span>
+            <span> created : {time_elapsed_string(comment.created_at)}</span>
           </div>
         );
       });

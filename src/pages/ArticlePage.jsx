@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { getArticle } from "../components/api";
 import ArticleComments from "../components/ArticleComments";
+import Comment from "../components/Comment";
+import { time_elapsed_string } from "../components/timeAgo";
 
 class ArticlePage extends Component {
   state = {
@@ -22,10 +24,16 @@ class ArticlePage extends Component {
             <br />
             <br />
             <span> votes : {this.state.article.votes}</span>
-            <span> created at : {this.state.article.created_at}</span>
+            <span>
+              {" "}
+              created : {time_elapsed_string(this.state.article.created_at)}
+            </span>
             <h3> comment count : {this.state.article.comment_count}</h3>
           </div>
-
+          <Comment
+            loggedInUser={this.props.loggedInUser}
+            article_id={this.state.article.article_id}
+          />
           <ArticleComments article_id={this.state.article.article_id} />
         </div>
       );

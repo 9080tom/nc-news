@@ -12,7 +12,11 @@ const MainPage = props => (
       <Articles path="/" />
       <Articles path="/:topic" />
       <Articles path="/home/:sort" />
-      <ArticlePage path="/articles/:article_id" />
+      <ArticlePage
+        path="/articles/:article_id"
+        logInUser={props.logInUser}
+        loggedInUser={props.loggedInUser}
+      />
       <LoginPage
         path="/login"
         logInUser={props.logInUser}

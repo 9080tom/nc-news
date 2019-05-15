@@ -36,4 +36,18 @@ export const getUser = username => {
     return user;
   });
 };
-//
+
+export const postComment = (body, article_id) => {
+  console.log(body, article_id);
+  return axios
+    .post(url + `articles/${article_id}/comments`, body)
+    .then(({ data: { comments } }) => {
+      console.log(comments);
+      return comments;
+    });
+};
+
+// axios.post("/user", {
+//   firstName: "Fred",
+//   lastName: "Flintstone"
+// });

@@ -10,12 +10,8 @@
 
 .MainPage {
   display: flex;
-  background-color: gainsboro;
+  background-color: rgb(104, 105, 38);
   justify-content: stretch;
-
-  /* 
-  background-image: url("./markus-spiske-1171520-unsplash.jpg");
-  width: 50%; */
 }
 
 #comment {
@@ -42,6 +38,7 @@
 
 .boxed {
   background-color: gainsboro;
+  border-radius: 25px;
   border: black;
   border-style: solid;
   margin: 2em;
@@ -50,4 +47,16 @@
 .avatar {
   height: 90%;
   width: 12%;
+}
+
+.commentBox {
+  width: 100%;
+  max-width: 600px;
+  height: 80px;
+  margin: 2em;
+}
+
+#form {
+  display: flex;
+  justify-content: center;
 }
