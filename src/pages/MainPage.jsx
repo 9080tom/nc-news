@@ -3,6 +3,7 @@ import LoginPage from "../pages/LoginPage";
 import Articles from "./Articles";
 import ArticlePage from "./ArticlePage";
 import NotFound from "./NotFound";
+import Users from "./Users";
 
 import { Router } from "@reach/router";
 
@@ -22,6 +23,7 @@ const MainPage = props => (
         logInUser={props.logInUser}
         loggedInUser={props.loggedInUser}
       />
+      <Users path="/users/:username" />
       <NotFound default />
     </Router>
   </div>

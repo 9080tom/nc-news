@@ -47,7 +47,10 @@ export const postComment = (body, article_id) => {
     });
 };
 
-// axios.post("/user", {
-//   firstName: "Fred",
-//   lastName: "Flintstone"
-// });
+export const patchArticle = (id, voteDirection) => {
+  return axios
+    .patch(url + `articles/${id}`, voteDirection)
+    .then(({ data: { article } }) => {
+      return article;
+    });
+};

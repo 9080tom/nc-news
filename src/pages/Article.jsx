@@ -7,8 +7,10 @@ const Article = props => (
     <Link to={`/articles/${props.article.article_id}`}>
       <h1>{props.article.title}</h1>
     </Link>
-    <span>author : {props.article.author}</span>
-
+    <span>
+      author :{" "}
+      <Link to={`/users/${props.article.author}`}> {props.article.author}</Link>
+    </span>
     <span>
       {" "}
       topic: <Link to={`/${props.article.topic}`}>{props.article.topic} </Link>

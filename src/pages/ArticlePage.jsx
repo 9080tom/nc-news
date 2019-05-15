@@ -3,10 +3,12 @@ import { getArticle } from "../components/api";
 import ArticleComments from "../components/ArticleComments";
 import Comment from "../components/Comment";
 import { time_elapsed_string } from "../components/timeAgo";
+import { patchArticle } from "../components/api";
 
 class ArticlePage extends Component {
   state = {
-    article: {}
+    article: {},
+    votes: 0
   };
   render() {
     if (this.state.article.author === undefined) {
@@ -14,6 +16,7 @@ class ArticlePage extends Component {
     } else {
       return (
         <div className={this.state.article.topic}>
+          {this.state.article.topic && <h3>{this.state.article.topic}</h3>}
           <div className="boxed">
             <h1>{this.state.article.title}</h1>
             <span>author : {this.state.article.author}</span>
@@ -23,7 +26,22 @@ class ArticlePage extends Component {
             <span> {this.state.article.body}</span>
             <br />
             <br />
-            <span> votes : {this.state.article.votes}</span>
+            <span>
+              {" "}
+              votes : {this.state.article.votes + this.state.votes}
+              <button
+                disabled={this.state.votes === 1}
+                onClick={() => this.handleVote(1)}
+              >
+                like
+              </button>
+              <button
+                disabled={this.state.votes === -1}
+                onClick={() => this.handleVote(-1)}
+              >
+                dislike
+              </button>
+            </span>
             <span>
               {" "}
               created : {time_elapsed_string(this.state.article.created_at)}
@@ -50,5 +68,15 @@ class ArticlePage extends Component {
         console.log(error);
       });
   }
+  handleVote = direction => {
+    patchArticle(this.props.article_id, { inc_votes: direction }).catch(err => {
+      console.log(err);
+    });
+    this.setState(prevState => {
+      return {
+        votes: prevState.votes + direction
+      };
+    });
+  };
 }
 export default ArticlePage;

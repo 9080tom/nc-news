@@ -1,9 +1,7 @@
 export const time_elapsed_string = datetime => {
   const now = new Date().getTime();
   const ago = new Date(datetime).getTime();
-  console.log(now, ago);
   let elapsed = now - ago;
-  console.log(elapsed);
   const msPerMinute = 60 * 1000;
   const msPerHour = msPerMinute * 60;
   const msPerDay = msPerHour * 24;
