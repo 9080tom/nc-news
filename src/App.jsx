@@ -21,6 +21,11 @@ class App extends Component {
   logInUser = user => {
     this.setState({ loggedInUser: user });
   };
+  componentDidMount() {
+    if (localStorage.loggedInUser !== "undefined") {
+      this.logInUser(JSON.parse(localStorage.loggedInUser));
+    }
+  }
 }
 
 export default App;

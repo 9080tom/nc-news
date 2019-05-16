@@ -38,16 +38,17 @@
 }
 
 .boxed {
-  background-color: rgba(220, 220, 220, 0.466);
-  border-radius: 25px;
+  background-color: rgba(220, 220, 220, 0.866);
+  /* border-radius: 25px;
   border: black;
-  border-style: solid;
+  border-style: solid; */
   margin: 2em;
+  /* opacity: 0.9; */
 }
 
 .avatar {
-  height: 90%;
-  width: 12%;
+  height: 70px;
+  width: 70px;
 }
 
 .commentBox {
@@ -55,6 +56,14 @@
   max-width: 600px;
   height: 80px;
   margin: 2em;
+}
+
+.votePosition {
+  display: flex;
+  margin: 1em;
+}
+
+.center {
 }
 
 #form {
@@ -86,4 +95,9 @@
 
 .error {
   color: red;
+}
+
+.textLayout {
+  display: flex;
+  justify-content: space-evenly;
 }

@@ -14,7 +14,7 @@ class LoginPage extends Component {
           <div>
             <h1>Are you sure you want to log out?</h1>
             <form>
-              <button>Logout</button>
+              <button onClick={this.loggout}>Logout</button>
             </form>
           </div>
         ) : (
@@ -44,10 +44,18 @@ class LoginPage extends Component {
     this.setState({ username: input });
   };
 
+  loggout = e => {
+    e.preventDefault();
+    localStorage.setItem("loggedInUser", "undefined");
+    this.props.logInUser({});
+    navigate("/");
+  };
+
   submitUserName = event => {
     event.preventDefault();
     getUser(this.state.username)
       .then(user => {
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
         this.props.logInUser(user);
         navigate("/");
       })

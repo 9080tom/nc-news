@@ -41,15 +41,23 @@ export const postComment = (body, article_id) => {
   console.log(body, article_id);
   return axios
     .post(url + `articles/${article_id}/comments`, body)
-    .then(({ data: { comments } }) => {
-      console.log(comments);
-      return comments;
+    .then(({ data: { comment } }) => {
+      console.log(comment);
+      return comment;
     });
 };
 
 export const patchArticle = (id, voteDirection) => {
   return axios
     .patch(url + `articles/${id}`, voteDirection)
+    .then(({ data: { article } }) => {
+      return article;
+    });
+};
+
+export const patchComment = (id, voteDirection) => {
+  return axios
+    .patch(url + `comments/${id}`, voteDirection)
     .then(({ data: { article } }) => {
       return article;
     });

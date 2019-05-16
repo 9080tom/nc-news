@@ -4,6 +4,7 @@ import ArticleLinkBar from "../components/articleLinkBar";
 import TopicBar from "./TopicBar";
 import { getArticles } from "../components/api";
 import PageChanger from "../components/PageChanger";
+import { navigate } from "@reach/router";
 
 class Articles extends Component {
   state = {
@@ -61,8 +62,11 @@ class Articles extends Component {
           total: articles.total_count
         });
       })
-      .catch(function(error) {
-        console.log(error);
+      .catch(({ response: { data, status } }) => {
+        navigate("/notFound", {
+          state: { data, from: "article", status },
+          replace: true
+        });
       });
   };
   changePage = (number, type) => {

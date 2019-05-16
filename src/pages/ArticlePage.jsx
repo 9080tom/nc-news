@@ -3,13 +3,12 @@ import { getArticle } from "../components/api";
 import ArticleComments from "../components/ArticleComments";
 import Comment from "../components/Comment";
 import { time_elapsed_string } from "../components/timeAgo";
-import { patchArticle } from "../components/api";
 import { Voter } from "../components/voter";
+import { navigate } from "@reach/router";
 
 class ArticlePage extends Component {
   state = {
-    article: {},
-    votes: 0
+    article: {}
   };
   render() {
     if (this.state.article.author === undefined) {
@@ -36,9 +35,9 @@ class ArticlePage extends Component {
               <h3> comment count : {this.state.article.comment_count}</h3>
             </div>
             <Voter
+              id={this.props.article_id}
               stateVotes={this.state.article.votes}
-              votes={this.state.votes}
-              handleVote={this.handleVote}
+              comment={false}
             />
           </div>
           <Comment
@@ -59,20 +58,12 @@ class ArticlePage extends Component {
       .then(article => {
         this.setState({ article });
       })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
+      .catch(({ response: { data, status } }) => {
+        navigate("/notFound", {
+          state: { data, from: "article", status },
+          replace: true
+        });
       });
   }
-  handleVote = direction => {
-    patchArticle(this.props.article_id, { inc_votes: direction }).catch(err => {
-      console.log(err);
-    });
-    this.setState(prevState => {
-      return {
-        votes: prevState.votes + direction
-      };
-    });
-  };
 }
 export default ArticlePage;

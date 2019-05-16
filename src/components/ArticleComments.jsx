@@ -7,8 +7,7 @@ import { Voter } from "../components/voter";
 class ArticleComments extends Component {
   state = {
     comments: [],
-    p: 1,
-    votes: []
+    p: 1
   };
   render() {
     if (this.state.comments.length === 0) {
@@ -19,22 +18,25 @@ class ArticleComments extends Component {
           {this.state.comments.map(comment => {
             return (
               <div id="comment" key={comment.comment_id} className="boxed">
-                <div>
-                  {" "}
-                  <h1>{comment.title}</h1>
-                  <span>author : {comment.author}</span>
-                  <p> {comment.body}</p>
-                  <span> votes : {comment.votes}</span>
-                  <span>
+                <div className="votePosition">
+                  <Voter
+                    stateVotes={comment.votes}
+                    id={comment.comment_id}
+                    comment={true}
+                  />
+
+                  <div className="center">
                     {" "}
-                    created : {time_elapsed_string(comment.created_at)}
-                  </span>
+                    <h1>{comment.title}</h1>
+                    <span>author : {comment.author}</span>
+                    <p> {comment.body}</p>
+                    <span> votes : {comment.votes}</span>
+                    <span>
+                      {" "}
+                      created : {time_elapsed_string(comment.created_at)}
+                    </span>
+                  </div>
                 </div>
-                {/* <Voter
-                  stateVotes={this.state.article.votes}
-                  votes={this.state.votes}
-                  handleVote={this.handleVote}
-                /> */}
               </div>
             );
           })}
@@ -59,11 +61,7 @@ class ArticleComments extends Component {
   getComments = p => {
     getArticleComments(this.props.article_id, { p })
       .then(comments => {
-        if (this.state.votes.length === 0) {
-          // const votes = new Array(comments.length);
-          // votes.map(() => 0);
-        }
-        this.setState({ comments, votes: [] });
+        this.setState({ comments });
       })
       .catch(function(error) {
         console.log(error);

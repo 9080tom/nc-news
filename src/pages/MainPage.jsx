@@ -2,10 +2,9 @@ import React from "react";
 import LoginPage from "../pages/LoginPage";
 import Articles from "./Articles";
 import ArticlePage from "./ArticlePage";
-import NotFound from "./NotFound";
 import Users from "./Users";
-
 import { Router } from "@reach/router";
+import { ShowError } from "../components/ShowError";
 
 const MainPage = props => (
   <div className="MainPage">
@@ -24,11 +23,10 @@ const MainPage = props => (
         loggedInUser={props.loggedInUser}
       />
       <Users path="/users/:username" />
-      <NotFound default />
+      <ShowError path="/notFound" />
+      <ShowError default />
     </Router>
   </div>
 );
 
 export default MainPage;
-
-//time ago?????
