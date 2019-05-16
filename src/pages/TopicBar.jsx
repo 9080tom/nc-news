@@ -17,7 +17,9 @@ class TopicBar extends Component {
           return (
             <span key={this.ucfirst(topic.slug)}>
               {" | "}
-              <Link to={`/${topic.slug}`}>{this.ucfirst(topic.slug)}</Link>
+              <Link to={`/topic/${topic.slug}`}>
+                {this.ucfirst(topic.slug)}
+              </Link>
             </span>
           );
         })}

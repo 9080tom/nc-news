@@ -18,7 +18,11 @@ class Articles extends Component {
     return (
       <div className={this.props.topic}>
         <span className="filters">
-          <ArticleLinkBar /> <TopicBar />
+          <ArticleLinkBar
+            topic={this.props.topic}
+            author={this.props.username}
+          />{" "}
+          <TopicBar />
         </span>
 
         {articles.map(article => {
@@ -47,6 +51,7 @@ class Articles extends Component {
       top: { sort_by: "votes" }
     };
     let query = page.top;
+
     if (this.props.sort !== undefined) {
       query = page[this.props.sort];
     }
@@ -56,6 +61,7 @@ class Articles extends Component {
     if (this.props.username) {
       query.author = this.props.username;
     }
+
     query.p = this.state.p;
 
     getArticles(query)

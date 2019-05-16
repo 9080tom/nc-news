@@ -20,7 +20,9 @@ const Article = props => (
         <span>
           {" "}
           topic:{" "}
-          <Link to={`/${props.article.topic}`}>{props.article.topic} </Link>
+          <Link to={`/topic/${props.article.topic}`}>
+            {props.article.topic}{" "}
+          </Link>
         </span>
       </div>
       <div>

@@ -1,12 +1,5 @@
 import React from "react";
 
-const SearchBar = () => (
-  <div>
-    <form>
-      <input type="text" />
-      <input type="submit" value="Search" />
-    </form>
-  </div>
-);
+const SearchBar = () => <h1>The Worlds Best New Site</h1>;
 
 export default SearchBar;
