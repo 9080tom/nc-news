@@ -35,7 +35,6 @@ class TopicBar extends Component {
       });
   }
   submitFilter = e => {
-    console.log(e);
     this.props.updateFilter();
   };
   ucfirst = string => {

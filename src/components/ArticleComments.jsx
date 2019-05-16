@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { time_elapsed_string } from "../components/timeAgo";
 import PageChanger from "./PageChanger";
 import { Voter } from "../components/voter";
-import DeleteButton from "./DeleteButton";
+import { DeleteButton } from "./DeleteButton";
 
 class ArticleComments extends Component {
   render() {
@@ -16,6 +16,7 @@ class ArticleComments extends Component {
               <div id="comment" key={comment.comment_id} className="boxed">
                 <div className="votePosition">
                   <Voter
+                    loggedInUser={this.props.loggedInUser}
                     stateVotes={comment.votes}
                     id={comment.comment_id}
                     comment={true}

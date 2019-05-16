@@ -22,7 +22,7 @@ const MainPage = props => (
         logInUser={props.logInUser}
         loggedInUser={props.loggedInUser}
       />
-      <Users path="/users/:username" />
+      <Articles path="/users/:username" />
       <ShowError path="/notFound" />
       <ShowError default />
     </Router>

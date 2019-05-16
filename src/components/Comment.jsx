@@ -23,7 +23,7 @@ class Comment extends Component {
           </form>
           {this.state.error === true && (
             <span className="error">
-              you must be <Link to="/login">loged in </Link>too comment!
+              you must be <Link to="/login">loged in </Link>to comment!
             </span>
           )}
         </div>
@@ -41,7 +41,6 @@ class Comment extends Component {
         this.setState({ textbox: "" });
       })
       .catch(err => {
-        console.log(err);
         this.setState({ error: true, addedComments: [] });
       });
   };

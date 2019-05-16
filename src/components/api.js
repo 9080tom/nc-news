@@ -32,17 +32,14 @@ export const getArticleComments = (id, page) => {
 
 export const getUser = username => {
   return axios.get(url + `users/${username}`).then(({ data: { user } }) => {
-    console.log(user);
     return user;
   });
 };
 
 export const postComment = (body, article_id) => {
-  console.log(body, article_id);
   return axios
     .post(url + `articles/${article_id}/comments`, body)
     .then(({ data: { comment } }) => {
-      console.log(comment);
       return comment;
     });
 };

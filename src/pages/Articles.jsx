@@ -53,6 +53,9 @@ class Articles extends Component {
     if (this.props.topic) {
       query.topic = this.props.topic;
     }
+    if (this.props.username) {
+      query.author = this.props.username;
+    }
     query.p = this.state.p;
 
     getArticles(query)

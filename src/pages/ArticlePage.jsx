@@ -8,6 +8,7 @@ import ArticleComments from "../components/ArticleComments";
 import Comment from "../components/Comment";
 import { time_elapsed_string } from "../components/timeAgo";
 import { Voter } from "../components/voter";
+import { navigate } from "@reach/router";
 
 class ArticlePage extends Component {
   state = {
@@ -43,6 +44,7 @@ class ArticlePage extends Component {
               id={this.props.article_id}
               stateVotes={this.state.article.votes}
               comment={false}
+              loggedInUser={this.props.loggedInUser}
             />
           </div>
           <Comment
@@ -67,20 +69,28 @@ class ArticlePage extends Component {
     }
   }
   deleteButton = id => {
-    console.log("deleted");
     deleteComment(id).then(() => this.getComments());
+    this.setState(prevState => {
+      return {
+        article: {
+          ...prevState.article,
+          comment_count: +prevState.article.comment_count - 1
+        }
+      };
+    });
     /////////update the sate of article comments???
   };
   componentDidMount() {
-    getArticle(this.props.article_id).then(article => {
-      this.setState({ article });
-    });
-    // .catch(({ response: { data, status } }) => {
-    //   navigate("/notFound", {
-    //     state: { data, from: "article", status },
-    //     replace: true
-    //   });
-    // });
+    getArticle(this.props.article_id)
+      .then(article => {
+        this.setState({ article });
+      })
+      .catch(({ response: { data, status } }) => {
+        navigate("/notFound", {
+          state: { data, from: "article", status },
+          replace: true
+        });
+      });
   }
   getComments = p => {
     getArticleComments(this.state.article.article_id, { p })
@@ -105,7 +115,11 @@ class ArticlePage extends Component {
   addComment = comment => {
     this.setState(prevState => {
       return {
-        comments: [comment, ...prevState.comments]
+        comments: [comment, ...prevState.comments],
+        article: {
+          ...prevState.article,
+          comment_count: +prevState.article.comment_count + 1
+        }
       };
     });
   };
