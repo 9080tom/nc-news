@@ -62,3 +62,7 @@ export const patchComment = (id, voteDirection) => {
       return article;
     });
 };
+
+export const deleteComment = id => {
+  return axios.delete(url + `comments/${id}`);
+};

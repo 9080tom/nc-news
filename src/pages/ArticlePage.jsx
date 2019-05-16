@@ -1,14 +1,19 @@
 import React, { Component } from "react";
-import { getArticle } from "../components/api";
+import {
+  getArticle,
+  deleteComment,
+  getArticleComments
+} from "../components/api";
 import ArticleComments from "../components/ArticleComments";
 import Comment from "../components/Comment";
 import { time_elapsed_string } from "../components/timeAgo";
 import { Voter } from "../components/voter";
-import { navigate } from "@reach/router";
 
 class ArticlePage extends Component {
   state = {
-    article: {}
+    article: {},
+    comments: [],
+    p: 1
   };
   render() {
     if (this.state.article.author === undefined) {
@@ -41,10 +46,19 @@ class ArticlePage extends Component {
             />
           </div>
           <Comment
+            addComment={this.addComment}
+            comments={this.state.comments}
+            deleteButton={this.deleteButton}
             loggedInUser={this.props.loggedInUser}
             article_id={this.state.article.article_id}
           />
           <ArticleComments
+            getComments={this.getComments}
+            comments={this.state.comments}
+            p={this.state.p}
+            changePage={this.changePage}
+            deleteButton={this.deleteButton}
+            loggedInUser={this.props.loggedInUser}
             total_count={this.state.article.comment_count}
             article_id={this.state.article.article_id}
           />
@@ -52,18 +66,48 @@ class ArticlePage extends Component {
       );
     }
   }
-
+  deleteButton = id => {
+    console.log("deleted");
+    deleteComment(id).then(() => this.getComments());
+    /////////update the sate of article comments???
+  };
   componentDidMount() {
-    getArticle(this.props.article_id)
-      .then(article => {
-        this.setState({ article });
-      })
-      .catch(({ response: { data, status } }) => {
-        navigate("/notFound", {
-          state: { data, from: "article", status },
-          replace: true
-        });
-      });
+    getArticle(this.props.article_id).then(article => {
+      this.setState({ article });
+    });
+    // .catch(({ response: { data, status } }) => {
+    //   navigate("/notFound", {
+    //     state: { data, from: "article", status },
+    //     replace: true
+    //   });
+    // });
   }
+  getComments = p => {
+    getArticleComments(this.state.article.article_id, { p })
+      .then(comments => {
+        this.setState({ comments });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+  changePage = (number, type) => {
+    if (type === "replace") {
+      this.setState(() => {
+        return { p: number };
+      });
+    } else {
+      this.setState(prevState => {
+        return { p: prevState.p + number };
+      });
+    }
+  };
+  addComment = comment => {
+    this.setState(prevState => {
+      return {
+        comments: [comment, ...prevState.comments]
+      };
+    });
+  };
 }
 export default ArticlePage;

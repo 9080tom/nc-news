@@ -1,21 +1,17 @@
 import React, { Component } from "react";
-import { getArticleComments } from "../components/api";
 import { time_elapsed_string } from "../components/timeAgo";
 import PageChanger from "./PageChanger";
 import { Voter } from "../components/voter";
+import DeleteButton from "./DeleteButton";
 
 class ArticleComments extends Component {
-  state = {
-    comments: [],
-    p: 1
-  };
   render() {
-    if (this.state.comments.length === 0) {
+    if (this.props.comments.length === 0) {
       return <div>Loading....</div>;
     } else {
       return (
         <div>
-          {this.state.comments.map(comment => {
+          {this.props.comments.map(comment => {
             return (
               <div id="comment" key={comment.comment_id} className="boxed">
                 <div className="votePosition">
@@ -36,12 +32,18 @@ class ArticleComments extends Component {
                       created : {time_elapsed_string(comment.created_at)}
                     </span>
                   </div>
+                  <DeleteButton
+                    deleteButton={this.props.deleteButton}
+                    loggedInUser={this.props.loggedInUser}
+                    comment_id={comment.comment_id}
+                    author={comment.author}
+                  />
                 </div>
               </div>
             );
           })}
           <PageChanger
-            p={this.state.p}
+            p={this.props.p}
             changePage={this.changePage}
             total={this.props.total_count}
           />
@@ -51,32 +53,12 @@ class ArticleComments extends Component {
   }
 
   componentDidMount() {
-    this.getComments();
+    this.props.getComments(this.props.p);
   }
   componentDidUpdate(prevProp, prevState) {
-    if (prevState.p !== this.state.p) {
-      this.getComments(this.state.p);
+    if (prevProp.p !== this.props.p) {
+      this.props.getComments(this.props.p);
     }
   }
-  getComments = p => {
-    getArticleComments(this.props.article_id, { p })
-      .then(comments => {
-        this.setState({ comments });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
-  changePage = (number, type) => {
-    if (type === "replace") {
-      this.setState(() => {
-        return { p: number };
-      });
-    } else {
-      this.setState(prevState => {
-        return { p: prevState.p + number };
-      });
-    }
-  };
 }
 export default ArticleComments;
