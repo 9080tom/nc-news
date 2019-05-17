@@ -4,7 +4,8 @@ import ArticleLinkBar from "../components/articleLinkBar";
 import TopicBar from "./TopicBar";
 import { getArticles } from "../components/api";
 import PageChanger from "../components/PageChanger";
-import { navigate } from "@reach/router";
+import { navigate, Link } from "@reach/router";
+import { ucFirst } from "../components/ucFirst";
 
 class Articles extends Component {
   state = {
@@ -22,6 +23,13 @@ class Articles extends Component {
             topic={this.props.topic}
             author={this.props.username}
           />{" "}
+          {this.props.topic && (
+            <h3 onClick={this.callApi}>
+              <Link to={`/topic/${this.props.topic}`}>
+                {ucFirst(this.props.topic)}
+              </Link>
+            </h3>
+          )}
           <TopicBar />
         </span>
 

@@ -3,6 +3,7 @@ import { time_elapsed_string } from "../components/timeAgo";
 import PageChanger from "./PageChanger";
 import { Voter } from "../components/voter";
 import { DeleteButton } from "./DeleteButton";
+import { Link } from "@reach/router";
 
 class ArticleComments extends Component {
   render() {
@@ -25,9 +26,13 @@ class ArticleComments extends Component {
                   <div className="center">
                     {" "}
                     <h1>{comment.title}</h1>
-                    <span>author : {comment.author}</span>
                     <p> {comment.body}</p>
-                    <span> votes : {comment.votes}</span>
+                    <span>
+                      author :{" "}
+                      <Link to={`/users/${comment.author}`}>
+                        {comment.author}
+                      </Link>
+                    </span>
                     <span>
                       {" "}
                       created : {time_elapsed_string(comment.created_at)}

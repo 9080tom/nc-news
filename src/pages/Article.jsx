@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import { time_elapsed_string } from "../components/timeAgo";
+import { ucFirst } from "../components/ucFirst";
 
 const Article = props => (
   <div className="boxed">
@@ -11,7 +12,7 @@ const Article = props => (
       <div>
         {" "}
         <span>
-          author :{" "}
+          Author :{" "}
           <Link to={`/users/${props.article.author}`}>
             {" "}
             {props.article.author}
@@ -19,9 +20,9 @@ const Article = props => (
         </span>
         <span>
           {" "}
-          topic:{" "}
+          Topic:{" "}
           <Link to={`/topic/${props.article.topic}`}>
-            {props.article.topic}{" "}
+            {ucFirst(props.article.topic)}{" "}
           </Link>
         </span>
       </div>

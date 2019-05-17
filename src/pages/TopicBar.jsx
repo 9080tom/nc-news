@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getTopics } from "../components/api";
 import { Link } from "@reach/router";
+import { ucFirst } from "../components/ucFirst";
 
 class TopicBar extends Component {
   state = {
@@ -15,11 +16,9 @@ class TopicBar extends Component {
         </Link>
         {this.state.topics.map(topic => {
           return (
-            <span key={this.ucfirst(topic.slug)}>
+            <span key={ucFirst(topic.slug)}>
               {" | "}
-              <Link to={`/topic/${topic.slug}`}>
-                {this.ucfirst(topic.slug)}
-              </Link>
+              <Link to={`/topic/${topic.slug}`}>{ucFirst(topic.slug)}</Link>
             </span>
           );
         })}
@@ -38,9 +37,6 @@ class TopicBar extends Component {
   }
   submitFilter = e => {
     this.props.updateFilter();
-  };
-  ucfirst = string => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
   };
 }
 

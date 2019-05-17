@@ -8,7 +8,7 @@ import ArticleComments from "../components/ArticleComments";
 import Comment from "../components/Comment";
 import { time_elapsed_string } from "../components/timeAgo";
 import { Voter } from "../components/voter";
-import { navigate } from "@reach/router";
+import { navigate, Link } from "@reach/router";
 
 class ArticlePage extends Component {
   state = {
@@ -22,14 +22,32 @@ class ArticlePage extends Component {
     } else {
       return (
         <div className={this.state.article.topic}>
-          {this.state.article.topic && <h3>{this.state.article.topic}</h3>}
+          {this.state.article.topic && (
+            <h3>
+              <Link to={`/topic/${this.state.article.topic}`}>
+                {this.state.article.topic}
+              </Link>
+            </h3>
+          )}
           <div className="boxed">
             <div>
               {" "}
               <h1>{this.state.article.title}</h1>
-              <span>author : {this.state.article.author}</span>
-              <span> Topic : {this.state.article.topic}</span>
-              <br />
+              <span>
+                Author :{" "}
+                <Link to={`/users/${this.state.article.author}`}>
+                  {this.state.article.author}
+                </Link>{" "}
+              </span>
+              <span>
+                {" "}
+                Topic :
+                <Link to={`/topic/${this.state.article.topic}`}>
+                  {" "}
+                  {this.state.article.topic}
+                </Link>
+                <br />
+              </span>
               <br />
               <span> {this.state.article.body}</span>
               <br />
