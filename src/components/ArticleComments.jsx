@@ -50,7 +50,7 @@ class ArticleComments extends Component {
           })}
           <PageChanger
             p={this.props.p}
-            changePage={this.changePage}
+            changePage={this.props.changePage}
             total={this.props.total_count}
           />
         </div>

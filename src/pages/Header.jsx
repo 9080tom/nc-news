@@ -12,19 +12,29 @@ const Header = props => (
       </Link>
     </div>
     <SearchBar />
+
     {props.loggedInUser.username ? (
-      <div>
-        logged in as {props.loggedInUser.username}
-        <img
-          src={props.loggedInUser.avatar_url}
-          alt="avatar"
-          className="avatar"
-        />
-        <Login loggedIn={false} />
+      <div className="dropdown">
+        <div className="dropbtn">
+          {" "}
+          <img
+            className="avatar"
+            src={props.loggedInUser.avatar_url}
+            alt="avatar"
+          />
+        </div>
+        <div className="dropdown-content">
+          <div>Logged in as {props.loggedInUser.username}</div>
+          <div id="lightUp">
+            <Link to={`/users/${props.loggedInUser.username}`}>
+              My articles
+            </Link>
+          </div>
+          <Login loggedIn={false} />
+        </div>
       </div>
     ) : (
       <div>
-        logged out
         <Login loggedIn={true} />
       </div>
     )}
