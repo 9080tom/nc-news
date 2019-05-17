@@ -46,7 +46,7 @@ class LoginPage extends Component {
 
   loggout = e => {
     e.preventDefault();
-    localStorage.setItem("loggedInUser", "undefined");
+    localStorage.loggedInUser = undefined;
     this.props.logInUser({});
     navigate("/");
   };

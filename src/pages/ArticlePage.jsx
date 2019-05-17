@@ -9,6 +9,7 @@ import Comment from "../components/Comment";
 import { time_elapsed_string } from "../components/timeAgo";
 import { Voter } from "../components/voter";
 import { navigate, Link } from "@reach/router";
+import { ucFirst } from "../components/ucFirst";
 
 class ArticlePage extends Component {
   state = {
@@ -25,7 +26,7 @@ class ArticlePage extends Component {
           {this.state.article.topic && (
             <h3>
               <Link to={`/topic/${this.state.article.topic}`}>
-                {this.state.article.topic}
+                {ucFirst(this.state.article.topic)}
               </Link>
             </h3>
           )}
@@ -44,7 +45,7 @@ class ArticlePage extends Component {
                 Topic :
                 <Link to={`/topic/${this.state.article.topic}`}>
                   {" "}
-                  {this.state.article.topic}
+                  {ucFirst(this.state.article.topic)}
                 </Link>
                 <br />
               </span>

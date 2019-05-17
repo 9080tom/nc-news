@@ -28,22 +28,24 @@ class ArticleComments extends Component {
                     <h1>{comment.title}</h1>
                     <p> {comment.body}</p>
                     <span>
-                      author :{" "}
+                      Author :{" "}
                       <Link to={`/users/${comment.author}`}>
                         {comment.author}
                       </Link>
                     </span>
                     <span>
                       {" "}
-                      created : {time_elapsed_string(comment.created_at)}
+                      Created : {time_elapsed_string(comment.created_at)}
                     </span>
                   </div>
-                  <DeleteButton
-                    deleteButton={this.props.deleteButton}
-                    loggedInUser={this.props.loggedInUser}
-                    comment_id={comment.comment_id}
-                    author={comment.author}
-                  />
+                  <div className="butcent">
+                    <DeleteButton
+                      deleteButton={this.props.deleteButton}
+                      loggedInUser={this.props.loggedInUser}
+                      comment_id={comment.comment_id}
+                      author={comment.author}
+                    />
+                  </div>
                 </div>
               </div>
             );

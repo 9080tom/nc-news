@@ -19,7 +19,9 @@ class Comment extends Component {
               value={this.state.textbox}
             />
 
-            <button disabled={!this.state.textbox}>Submit</button>
+            <div className="butcent">
+              <button disabled={!this.state.textbox}>Submit</button>
+            </div>
           </form>
           {this.state.error === true && (
             <span className="error">
