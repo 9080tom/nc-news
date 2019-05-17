@@ -12,6 +12,7 @@ export class Voter extends Component {
       <span>
         {" "}
         <button
+          id="i"
           disabled={this.state.votes === 1}
           onClick={() => this.handleVote(1)}
         >

@@ -18,10 +18,8 @@
 #comment {
   border-bottom: 20px;
 }
-
-.filters {
+vdxvsdvxvx .filters {
   display: flex;
-  justify-content: center;
   justify-content: space-between;
 }
 
@@ -65,8 +63,21 @@
   margin: 1em;
 }
 
-.center {
+/* #i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
 }
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+} */
 
 #form {
   display: flex;

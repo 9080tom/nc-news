@@ -18,7 +18,7 @@ class LoginPage extends Component {
             </form>
           </div>
         ) : (
-          <div>
+          <div className="filters">
             <h1>Login Page</h1>
             <form onSubmit={this.submitUserName}>
               <label>

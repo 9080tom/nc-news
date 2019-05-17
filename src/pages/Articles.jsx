@@ -61,7 +61,18 @@ class Articles extends Component {
     let query = page.top;
 
     if (this.props.sort !== undefined) {
-      query = page[this.props.sort];
+      if (Object.keys(page).includes(this.props.sort)) {
+        query = page[this.props.sort];
+      } else {
+        navigate("/notFound", {
+          state: {
+            data: { msg: "Invalid sort" },
+            from: "article",
+            status: 404
+          },
+          replace: true
+        });
+      }
     }
     if (this.props.topic) {
       query.topic = this.props.topic;
