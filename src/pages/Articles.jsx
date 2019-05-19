@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import Article from "./Article";
-import ArticleLinkBar from "../components/articleLinkBar";
-import TopicBar from "./TopicBar";
 import { getArticles } from "../components/api";
 import PageChanger from "../components/PageChanger";
-import { navigate, Link } from "@reach/router";
-import { ucFirst } from "../components/ucFirst";
+import { navigate } from "@reach/router";
+import SubHeader from "./SubHeader";
 
 class Articles extends Component {
   state = {
@@ -17,24 +15,20 @@ class Articles extends Component {
   render() {
     const { articles, p } = this.state;
     return (
-      <div className={this.props.topic}>
-        <span className="filters">
-          <ArticleLinkBar
-            topic={this.props.topic}
-            author={this.props.username}
-          />{" "}
-          {this.props.topic && (
-            <h3 onClick={this.callApi}>
-              <Link to={`/topic/${this.props.topic}`}>
-                {ucFirst(this.props.topic)}
-              </Link>
-            </h3>
-          )}
-          <TopicBar />
-        </span>
-
+      <div>
+        <SubHeader
+          topic={this.props.topic}
+          author={this.props.username}
+          callApi={this.callApi}
+        />
         {articles.map(article => {
-          return <Article key={article.article_id} article={article} />;
+          return (
+            <Article
+              loggedInUser={this.props.loggedInUser}
+              key={article.article_id}
+              article={article}
+            />
+          );
         })}
         <PageChanger
           p={p}

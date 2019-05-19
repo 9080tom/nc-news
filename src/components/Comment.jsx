@@ -17,10 +17,15 @@ class Comment extends Component {
               placeholder="add a public comment..."
               onChange={this.updateText}
               value={this.state.textbox}
+              required
             />
 
             <div className="butcent">
-              <button disabled={!this.state.textbox}>Submit</button>
+              <button
+              // disabled={!this.state.textbox}
+              >
+                Submit
+              </button>
             </div>
           </form>
           {this.state.error === true && (

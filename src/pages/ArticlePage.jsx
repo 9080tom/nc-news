@@ -10,6 +10,7 @@ import { time_elapsed_string } from "../components/timeAgo";
 import { Voter } from "../components/voter";
 import { navigate, Link } from "@reach/router";
 import { ucFirst } from "../components/ucFirst";
+import SubHeader from "./SubHeader";
 
 class ArticlePage extends Component {
   state = {
@@ -23,48 +24,48 @@ class ArticlePage extends Component {
     } else {
       return (
         <div className={this.state.article.topic}>
-          {this.state.article.topic && (
-            <h3>
-              <Link to={`/topic/${this.state.article.topic}`}>
-                {ucFirst(this.state.article.topic)}
-              </Link>
-            </h3>
-          )}
+          <SubHeader
+            topic={this.state.article.topic}
+            author={this.state.article.username}
+            callApi={this.callApi}
+          />
           <div className="boxed">
-            <div>
-              {" "}
-              <h1>{this.state.article.title}</h1>
-              <span>
-                Author :{" "}
-                <Link to={`/users/${this.state.article.author}`}>
-                  {this.state.article.author}
-                </Link>{" "}
-              </span>
-              <span>
+            <div className="votePosition">
+              <Voter
+                id={this.props.article_id}
+                stateVotes={this.state.article.votes}
+                comment={false}
+                loggedInUser={this.props.loggedInUser}
+              />
+              <div>
                 {" "}
-                Topic :
-                <Link to={`/topic/${this.state.article.topic}`}>
+                <h1>{this.state.article.title}</h1>
+                <span>
+                  Author :{" "}
+                  <Link to={`/users/${this.state.article.author}`}>
+                    {this.state.article.author}
+                  </Link>{" "}
+                </span>
+                <span>
                   {" "}
-                  {ucFirst(this.state.article.topic)}
-                </Link>
+                  Topic :
+                  <Link to={`/topic/${this.state.article.topic}`}>
+                    {" "}
+                    {ucFirst(this.state.article.topic)}
+                  </Link>
+                  <br />
+                </span>
                 <br />
-              </span>
-              <br />
-              <span> {this.state.article.body}</span>
-              <br />
-              <br />
-              <span>
-                {" "}
-                created : {time_elapsed_string(this.state.article.created_at)}
-              </span>
-              <h3> comment count : {this.state.article.comment_count}</h3>
+                <span> {this.state.article.body}</span>
+                <br />
+                <br />
+                <span>
+                  {" "}
+                  Created : {time_elapsed_string(this.state.article.created_at)}
+                </span>
+                <h3> Comment count : {this.state.article.comment_count}</h3>
+              </div>
             </div>
-            <Voter
-              id={this.props.article_id}
-              stateVotes={this.state.article.votes}
-              comment={false}
-              loggedInUser={this.props.loggedInUser}
-            />
           </div>
           <Comment
             addComment={this.addComment}

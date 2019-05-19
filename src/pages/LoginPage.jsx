@@ -24,11 +24,13 @@ class LoginPage extends Component {
               <label>
                 Username{" "}
                 <input
+                  autoFocus
                   type="text"
                   placeholder="example: jessjelly"
                   onChange={e => {
                     this.updateUserName(e.target.value);
                   }}
+                  required
                 />
               </label>
               <button>Login</button>

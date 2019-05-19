@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .header {
@@ -9,9 +9,20 @@
   border-bottom: black solid;
 }
 
+.Motto {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 5vw;
+}
+@media (min-width: 1000px) {
+  .Motto {
+    /* Never get larger than this */
+    font-size: 50px;
+  }
+}
+
 .MainPage {
   display: flex;
-  background-color: rgb(60, 59, 60);
+  background-color: rgb(255, 255, 255);
   justify-content: center;
 }
 
@@ -21,26 +32,27 @@
 .filters {
   display: flex;
   justify-content: space-between;
+  min-width: 99.1vw;
+  min-height: 3vw;
+  border-bottom: black solid;
 }
 
-.coding {
+#coding {
   background-image: url("./images/vector-computer-illustration-set.jpg");
-  background-size: 500px 500px;
-  min-width: 98vw;
+  background-size: 100px 100px;
 }
 
-.football {
+#football {
   background-image: url("./images/istockphoto-904154438-612x612.jpg");
-  min-width: 98vw;
 }
-.cooking {
+#cooking {
   background-image: url("./images/vector-spanish-food-pattern.jpg");
-  min-width: 98vw;
 }
 
 .boxed {
   background-color: rgba(220, 220, 220, 0.866);
-  margin: 2em;
+  margin: 1em;
+  padding: 1em;
 }
 
 .avatar {
@@ -58,6 +70,10 @@
 .votePosition {
   display: flex;
   justify-content: space-between;
+  margin: 1em;
+}
+.votePositionMainPage {
+  display: flex;
   margin: 1em;
 }
 .butcent {
@@ -80,6 +96,9 @@
   color: red;
 }
 
+.blackLink {
+  color: black;
+}
 .textLayout {
   display: flex;
   justify-content: space-evenly;
@@ -90,11 +109,11 @@
     flex-direction: column;
   }
 }
-
+/* 
 button {
   width: 7em;
   height: 3em;
-}
+} */
 
 .dropbtn {
   background-color: #4caf50;
@@ -117,6 +136,7 @@ button {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  border: black solid;
 }
 
 .dropdown-content div {
@@ -126,12 +146,43 @@ button {
   display: block;
 }
 
-/* Change color of dropdown links on hover */
-/* .dropdown-content #lightUp:hover {
-  background-color: #f1f1f1;
-} */
-
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.triangle-up {
+  width: 0px;
+  height: 0px;
+  background-size: contain;
+  border-left: 25px dashed transparent;
+  border-right: 25px dashed transparent;
+  border-bottom: 25px dashed rgb(129, 129, 129);
+}
+
+.triangle-up-clicked {
+  border-left: 25px dashed transparent;
+  border-right: 25px dashed transparent;
+  border-bottom: 25px dashed rgb(60, 59, 60);
+}
+
+.triangle-down {
+  width: 0px;
+  height: 0px;
+  background-size: contain;
+  border-left: 25px dashed transparent;
+  border-right: 25px dashed transparent;
+  border-top: 25px dashed rgb(129, 129, 129);
+}
+
+.triangle-down-clicked {
+  border-left: 25px dashed transparent;
+  border-right: 25px dashed transparent;
+  border-top: 25px dashed rgb(60, 59, 60);
+}
+
+.centerVotes {
+  text-align: center;
+  margin: 0.2em;
+  margin-right: 1em;
+  width: 50px;
 }
