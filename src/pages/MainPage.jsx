@@ -4,6 +4,7 @@ import Articles from "./Articles";
 import ArticlePage from "./ArticlePage";
 import { Router } from "@reach/router";
 import { ShowError } from "../components/ShowError";
+import CreateArticle from "./CreateArticle";
 
 const MainPage = props => (
   <div className="MainPage">
@@ -28,6 +29,7 @@ const MainPage = props => (
         logInUser={props.logInUser}
         loggedInUser={props.loggedInUser}
       />
+      <CreateArticle path="/createarticle" loggedInUser={props.loggedInUser} />
       <ShowError path="/notFound" />
       <ShowError default />
     </Router>

@@ -22,13 +22,13 @@ const Article = props => (
         <div className="textLayout">
           {" "}
           <span>
-            Author :{" "}
+            Created by{" "}
             <Link to={`/users/${props.article.author}`}>
               {" "}
               {props.article.author}
             </Link>{" "}
-            |
           </span>
+          <span>{time_elapsed_string(props.article.created_at)} | </span>
           <span>
             {" "}
             Topic:{" "}
@@ -37,10 +37,6 @@ const Article = props => (
             </Link>{" "}
             |{" "}
           </span>{" "}
-          <span>
-            {"                  "}
-            Created : {time_elapsed_string(props.article.created_at)} |{" "}
-          </span>
           <span> Comments : {props.article.comment_count} </span>
         </div>
       </div>

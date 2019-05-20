@@ -39,6 +39,12 @@ class Articles extends Component {
     );
   }
   componentDidUpdate(prevProp, prevState) {
+    if (
+      prevProp.topic !== this.props.topic ||
+      prevProp.username !== this.props.username
+    ) {
+      this.setState({ p: 1 });
+    }
     if (prevState.p !== this.state.p) this.callApi();
     if (prevProp !== this.props) this.callApi();
   }

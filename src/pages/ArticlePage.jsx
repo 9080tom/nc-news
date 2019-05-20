@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import {
   getArticle,
   deleteComment,
-  getArticleComments
+  getArticleComments,
+  deleteArticle
 } from "../components/api";
 import ArticleComments from "../components/ArticleComments";
 import Comment from "../components/Comment";
@@ -11,6 +12,7 @@ import { Voter } from "../components/voter";
 import { navigate, Link } from "@reach/router";
 import { ucFirst } from "../components/ucFirst";
 import SubHeader from "./SubHeader";
+import { DeleteButton } from "../components/DeleteButton";
 
 class ArticlePage extends Component {
   state = {
@@ -41,14 +43,18 @@ class ArticlePage extends Component {
                 {" "}
                 <h1>{this.state.article.title}</h1>
                 <span>
-                  Author :{" "}
+                  Created by{" "}
                   <Link to={`/users/${this.state.article.author}`}>
                     {this.state.article.author}
                   </Link>{" "}
                 </span>
                 <span>
                   {" "}
-                  Topic :
+                  {time_elapsed_string(this.state.article.created_at)}
+                </span>
+                <span>
+                  {" "}
+                  | Topic :
                   <Link to={`/topic/${this.state.article.topic}`}>
                     {" "}
                     {ucFirst(this.state.article.topic)}
@@ -59,18 +65,20 @@ class ArticlePage extends Component {
                 <span> {this.state.article.body}</span>
                 <br />
                 <br />
-                <span>
-                  {" "}
-                  Created : {time_elapsed_string(this.state.article.created_at)}
-                </span>
                 <h3> Comment count : {this.state.article.comment_count}</h3>
+                <DeleteButton
+                  deleteButton={this.deleteButtonA}
+                  loggedInUser={this.props.loggedInUser}
+                  comment_id={this.state.article.article_id}
+                  author={this.state.article.author}
+                />
               </div>
             </div>
           </div>
           <Comment
             addComment={this.addComment}
             comments={this.state.comments}
-            deleteButton={this.deleteButton}
+            deleteButton={this.deleteButtonC}
             loggedInUser={this.props.loggedInUser}
             article_id={this.state.article.article_id}
           />
@@ -79,7 +87,7 @@ class ArticlePage extends Component {
             comments={this.state.comments}
             p={this.state.p}
             changePage={this.changePage}
-            deleteButton={this.deleteButton}
+            deleteButton={this.deleteButtonC}
             loggedInUser={this.props.loggedInUser}
             total_count={this.state.article.comment_count}
             article_id={this.state.article.article_id}
@@ -88,7 +96,7 @@ class ArticlePage extends Component {
       );
     }
   }
-  deleteButton = id => {
+  deleteButtonC = id => {
     deleteComment(id).then(() => this.getComments());
     this.setState(prevState => {
       return {
@@ -98,8 +106,14 @@ class ArticlePage extends Component {
         }
       };
     });
-    /////////update the sate of article comments???
   };
+  deleteButtonA = id => {
+    deleteArticle(id).then(() => {
+      navigate("/");
+    });
+  };
+  /////////update the sate of article comments???
+
   componentDidMount() {
     getArticle(this.props.article_id)
       .then(article => {

@@ -25,6 +25,9 @@ const Header = props => (
         </div>
         <div className="dropdown-content">
           <div>Logged in as {props.loggedInUser.username}</div>
+          <div>
+            <Link to={`/createarticle`}>Create An Article</Link>
+          </div>
           <div id="lightUp">
             <Link to={`/users/${props.loggedInUser.username}`}>
               My articles

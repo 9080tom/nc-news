@@ -63,3 +63,14 @@ export const patchComment = (id, voteDirection) => {
 export const deleteComment = id => {
   return axios.delete(url + `comments/${id}`);
 };
+
+export const deleteArticle = id => {
+  return axios.delete(url + `articles/${id}`);
+};
+
+export const postArticle = body => {
+  console.log(body);
+  return axios.post(url + `articles`, body).then(({ data: { article } }) => {
+    return article;
+  });
+};
