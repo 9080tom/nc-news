@@ -30,7 +30,7 @@ class Comment extends Component {
           </form>
           {this.state.error === true && (
             <span className="error">
-              you must be <Link to="/login">loged in </Link>to comment!
+              you must be <Link to="/login">logged in </Link>to comment!
             </span>
           )}
         </div>

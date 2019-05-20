@@ -7,7 +7,7 @@ import { ShowError } from "../components/ShowError";
 
 const MainPage = props => (
   <div className="MainPage">
-    <Router>
+    <Router primary={false}>
       <Articles path="/" loggedInUser={props.loggedInUser} />
       <Articles path="/users/:username/" loggedInUser={props.loggedInUser} />
       <Articles

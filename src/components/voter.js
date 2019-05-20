@@ -29,7 +29,7 @@ export class Voter extends Component {
         />
         {this.state.error === true && (
           <div className="error">
-            you must be <Link to="/login">loged in </Link>to vote!
+            you must be <Link to="/login">logged in </Link>to vote!
           </div>
         )}
       </span>
