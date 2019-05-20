@@ -34,7 +34,6 @@ class ArticleComments extends Component {
                       </Link>
                     </span>
                     <span>
-                      {" "}
                       Created : {time_elapsed_string(comment.created_at)}
                     </span>
                   </div>

@@ -20,7 +20,7 @@ class Comment extends Component {
               required
             />
 
-            <div className="butcent">
+            <div className="butcent2">
               <button
               // disabled={!this.state.textbox}
               >

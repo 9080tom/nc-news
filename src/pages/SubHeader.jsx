@@ -9,9 +9,18 @@ export default function SubHeader(props) {
     <div className="filters" id={props.topic}>
       <ArticleLinkBar topic={props.topic} author={props.username} />{" "}
       {props.topic && (
-        <h3 className="blackLink" onClick={props.callApi}>
-          <Link to={`/topic/${props.topic}`}>{ucFirst(props.topic)}</Link>
-        </h3>
+        <Link to={`/topic/${props.topic}`}>
+          <h3 className="blackLink" onClick={props.callApi}>
+            {ucFirst(props.topic)}
+          </h3>{" "}
+        </Link>
+      )}
+      {props.author && (
+        <Link to={`/users/${props.author}`}>
+          <h3 className="blackLink" onClick={props.callApi}>
+            {ucFirst(props.author)}
+          </h3>{" "}
+        </Link>
       )}
       <TopicBar />
     </div>

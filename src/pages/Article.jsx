@@ -6,7 +6,7 @@ import { Voter } from "../components/voter";
 
 const Article = props => (
   <div className="boxed">
-    <div className="votePositionMainPage">
+    <div className="votePosition">
       <Voter
         loggedInUser={props.loggedInUser}
         stateVotes={props.article.votes}
@@ -20,31 +20,28 @@ const Article = props => (
           <h3 className="blackLink">{props.article.title}</h3>
         </Link>
         <div className="textLayout">
-          <div>
-            {" "}
-            <span>
-              Author :{" "}
-              <Link to={`/users/${props.article.author}`}>
-                {" "}
-                {props.article.author}
-              </Link>
-            </span>
-            <span>
+          {" "}
+          <span>
+            Author :{" "}
+            <Link to={`/users/${props.article.author}`}>
               {" "}
-              Topic:{" "}
-              <Link to={`/topic/${props.article.topic}`}>
-                {ucFirst(props.article.topic)}{" "}
-              </Link>
-            </span>
-          </div>
-          <div>
+              {props.article.author}
+            </Link>{" "}
+            |
+          </span>
+          <span>
             {" "}
-            <span>
-              {" "}
-              Created : {time_elapsed_string(props.article.created_at)} |
-            </span>
-            <span> Comments : {props.article.comment_count} </span>
-          </div>
+            Topic:{" "}
+            <Link to={`/topic/${props.article.topic}`}>
+              {ucFirst(props.article.topic)}{" "}
+            </Link>{" "}
+            |{" "}
+          </span>{" "}
+          <span>
+            {"                  "}
+            Created : {time_elapsed_string(props.article.created_at)} |{" "}
+          </span>
+          <span> Comments : {props.article.comment_count} </span>
         </div>
       </div>
     </div>
