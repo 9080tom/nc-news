@@ -3,7 +3,10 @@ import React from "react";
 export const DeleteButton = props => {
   if (props.author === props.loggedInUser)
     return (
-      <button onClick={() => props.deleteButton(props.comment_id)}>
+      <button
+        id="button-dark"
+        onClick={() => props.deleteButton(props.comment_id)}
+      >
         Delete
       </button>
     );

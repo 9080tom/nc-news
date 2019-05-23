@@ -119,6 +119,16 @@
     flex-direction: column;
   }
 }
+.createArticle {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+.PageChanger {
+  display: flex;
+  justify-content: center;
+}
+
 /* dropdown */
 
 .dropbtn {
@@ -138,7 +148,7 @@
   display: none;
   right: 0;
   position: absolute;
-  background-color: rgb(60, 59, 60);
+  background-color: rgba(220, 220, 220, 0.866);
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -158,6 +168,7 @@
 
 /* vote buttons */
 .triangle-up {
+  transition-duration: 0.4s;
   cursor: pointer;
   width: 0px;
   height: 0px;
@@ -175,6 +186,7 @@
 }
 
 .triangle-down {
+  transition-duration: 0.4s;
   cursor: pointer;
   width: 0px;
   height: 0px;
@@ -190,10 +202,38 @@
   border-right: 25px dashed transparent;
   border-top: 25px dashed rgb(60, 59, 60);
 }
+.triangle-up:hover {
+  border-bottom: 25px dashed rgb(60, 59, 60);
+}
+.triangle-down:hover {
+  border-top: 25px dashed rgb(60, 59, 60);
+}
 
 .centerVotes {
   text-align: center;
   margin: 0.2em;
   margin-right: 1em;
   width: 50px;
+}
+
+/* button css */
+
+button {
+  background-color: rgba(220, 220, 220, 0.866);
+  transition-duration: 0.4s;
+  border-radius: 2px;
+  border: none;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+button:hover {
+  background-color: rgb(60, 59, 60); /* Green */
+  color: white;
+}
+
+#button-dark {
+  background-color: rgb(129, 129, 129, 0.56);
 }

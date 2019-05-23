@@ -9,7 +9,7 @@ const PageChanger = props => {
   }
 
   return (
-    <div>
+    <div className="PageChanger">
       {p !== 1 && <button onClick={() => props.changePage(-1)}>back</button>}
       {pageTotal !== 1 &&
         numButs.map(numBut => {

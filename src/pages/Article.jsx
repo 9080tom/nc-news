@@ -13,31 +13,22 @@ const Article = props => (
         id={props.article.article_id}
         comment={false}
       />
-      {/* <div> Votes : {props.article.votes}</div> */}
-
       <div>
         <Link to={`/articles/${props.article.article_id}`}>
           <h3 className="blackLink">{props.article.title}</h3>
         </Link>
         <div className="textLayout">
-          {" "}
           <span>
             Created by{" "}
             <Link to={`/users/${props.article.author}`}>
-              {" "}
               {props.article.author}
             </Link>{" "}
-          </span>
-          <span>{time_elapsed_string(props.article.created_at)} | </span>
-          <span>
-            {" "}
-            Topic:{" "}
+            {time_elapsed_string(props.article.created_at)} | Topic:{" "}
             <Link to={`/topic/${props.article.topic}`}>
-              {ucFirst(props.article.topic)}{" "}
+              {ucFirst(props.article.topic)}
             </Link>{" "}
-            |{" "}
-          </span>{" "}
-          <span> Comments : {props.article.comment_count} </span>
+            | Comments : {props.article.comment_count}{" "}
+          </span>
         </div>
       </div>
     </div>

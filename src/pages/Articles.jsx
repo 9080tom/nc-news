@@ -39,20 +39,20 @@ class Articles extends Component {
     );
   }
   componentDidUpdate(prevProp, prevState) {
-    if (
-      prevProp.topic !== this.props.topic ||
-      prevProp.username !== this.props.username
-    ) {
-      this.setState({ p: 1 });
-    }
+    // if (
+    //   prevProp.topic !== this.props.topic ||
+    //   prevProp.username !== this.props.username
+    // ) {
+    //   this.setState({ p: 1 });
+    // }
     if (prevState.p !== this.state.p) this.callApi();
-    if (prevProp !== this.props) this.callApi();
+    if (prevProp !== this.props) this.callApi(1);
   }
   componentDidMount() {
     this.callApi();
   }
 
-  callApi = () => {
+  callApi = (p = this.state.p) => {
     const page = {
       new: { sort_by: "created_at" },
       mostDiscussed: { sort_by: "comment_count" },
@@ -81,13 +81,14 @@ class Articles extends Component {
       query.author = this.props.username;
     }
 
-    query.p = this.state.p;
+    query.p = p;
 
     getArticles(query)
       .then(articles => {
         this.setState({
           articles: articles.articles,
-          total: articles.total_count
+          total: articles.total_count,
+          p: p
         });
       })
       .catch(({ response: { data, status } }) => {

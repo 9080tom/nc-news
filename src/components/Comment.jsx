@@ -21,7 +21,7 @@ class Comment extends Component {
             />
 
             <div className="butcent2">
-              <button>Submit</button>
+              <button id="button-dark">Submit</button>
             </div>
           </form>
           {this.state.error === true && (

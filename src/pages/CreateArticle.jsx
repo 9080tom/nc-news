@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getTopics, postArticle } from "../components/api";
+import { ucFirst } from "../components/ucFirst";
 
 export default class CreateArticle extends Component {
   state = {
@@ -12,7 +13,7 @@ export default class CreateArticle extends Component {
     return (
       <div>
         <h3>Create an article</h3>
-        <form onSubmit={this.addArticle}>
+        <form onSubmit={this.addArticle} className="createArticle">
           <select
             required
             onChange={e => {
@@ -24,12 +25,13 @@ export default class CreateArticle extends Component {
               <option>loading</option>
             ) : (
               this.state.topics.map(topic => {
-                return <option key={topic.slug}>{topic.slug}</option>;
+                return <option key={topic.slug}>{ucFirst(topic.slug)}</option>;
               })
             )}
           </select>
+          <br />
           <label>
-            Title
+            Title{" "}
             <input
               required
               onChange={e => {
@@ -37,8 +39,9 @@ export default class CreateArticle extends Component {
               }}
             />
           </label>
+          <br />
           <label>
-            Description
+            Description{" "}
             <textarea
               required
               onChange={e => {

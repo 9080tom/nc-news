@@ -25,19 +25,19 @@ export const time_elapsed_string = datetime => {
     );
   } else if (elapsed < msPerMonth) {
     return (
-      "approximately " +
+      " approximately " +
       Math.round(elapsed / msPerDay) +
       (Math.round(elapsed / msPerDay) === 1 ? " day ago" : " days ago")
     );
   } else if (elapsed < msPerYear) {
     return (
-      "approximately " +
+      " approximately " +
       Math.round(elapsed / msPerMonth) +
       (Math.round(elapsed / msPerMonth) === 1 ? " month ago" : " months ago")
     );
   } else {
     return (
-      "approximately " +
+      " approximately " +
       Math.round(elapsed / msPerYear) +
       (Math.round(elapsed / msPerYear) === 1 ? " year ago" : " years ago")
     );

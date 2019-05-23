@@ -109,11 +109,9 @@ class ArticlePage extends Component {
   };
   deleteButtonA = id => {
     deleteArticle(id).then(() => {
-      navigate("/");
+      navigate(`/users/${this.props.loggedInUser}`);
     });
   };
-  /////////update the sate of article comments???
-
   componentDidMount() {
     getArticle(this.props.article_id)
       .then(article => {
