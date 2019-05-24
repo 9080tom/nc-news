@@ -24,16 +24,12 @@ class ArticleComments extends Component {
                   />
 
                   <div className="center">
-                    {" "}
-                    <h1>{comment.title}</h1>
                     <p> {comment.body}</p>
                     <span>
                       Author :{" "}
                       <Link to={`/users/${comment.author}`}>
                         {comment.author}
-                      </Link>
-                    </span>
-                    <span>
+                      </Link>{" "}
                       Created : {time_elapsed_string(comment.created_at)}
                     </span>
                   </div>

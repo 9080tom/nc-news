@@ -21,15 +21,18 @@ class Articles extends Component {
           author={this.props.username}
           callApi={this.callApi}
         />
-        {articles.map(article => {
-          return (
-            <Article
-              loggedInUser={this.props.loggedInUser}
-              key={article.article_id}
-              article={article}
-            />
-          );
-        })}
+        <div className="centerArticles">
+          {articles.map(article => {
+            return (
+              <Article
+                loggedInUser={this.props.loggedInUser}
+                key={article.article_id}
+                article={article}
+              />
+            );
+          })}
+        </div>
+
         <PageChanger
           p={p}
           changePage={this.changePage}

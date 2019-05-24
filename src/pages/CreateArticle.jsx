@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getTopics, postArticle } from "../components/api";
 import { ucFirst } from "../components/ucFirst";
+import SubHeader from "./SubHeader";
 
 export default class CreateArticle extends Component {
   state = {
@@ -11,46 +12,60 @@ export default class CreateArticle extends Component {
   };
   render() {
     return (
-      <div>
-        <h3>Create an article</h3>
-        <form onSubmit={this.addArticle} className="createArticle">
-          <select
-            required
-            onChange={e => {
-              this.updateTopic(e.target.value);
-            }}
-          >
-            {" "}
-            {this.state.topics === "loading" ? (
-              <option>loading</option>
-            ) : (
-              this.state.topics.map(topic => {
-                return <option key={topic.slug}>{ucFirst(topic.slug)}</option>;
-              })
-            )}
-          </select>
+      <div className="centerArticles">
+        <SubHeader />
+        <div className="boxed">
+          <h3 id="form">Create an article</h3>
+        </div>
+        <div className="boxed">
           <br />
-          <label>
-            Title{" "}
-            <input
-              required
-              onChange={e => {
-                this.updateTitle(e.target.value);
-              }}
-            />
-          </label>
-          <br />
-          <label>
-            Description{" "}
-            <textarea
-              required
-              onChange={e => {
-                this.updateDescription(e.target.value);
-              }}
-            />
-          </label>
-          <button>Submit Article</button>
-        </form>
+          <div className="centerArticles">
+            <form onSubmit={this.addArticle} className="createArticle">
+              <select
+                required
+                onChange={e => {
+                  this.updateTopic(e.target.value);
+                }}
+              >
+                {" "}
+                {this.state.topics === "loading" ? (
+                  <option>loading</option>
+                ) : (
+                  this.state.topics.map(topic => {
+                    return (
+                      <option key={topic.slug}>{ucFirst(topic.slug)}</option>
+                    );
+                  })
+                )}
+              </select>
+              <br />
+              <label className="input-label2">
+                Title{" "}
+                <input
+                  className="form-input"
+                  required
+                  onChange={e => {
+                    this.updateTitle(e.target.value);
+                  }}
+                />
+              </label>
+              <br />
+              <label className="input-label">
+                Description{" "}
+                <textarea
+                  id="new-article-post-text-area"
+                  required
+                  onChange={e => {
+                    this.updateDescription(e.target.value);
+                  }}
+                />
+              </label>
+              <button id="button-dark" className="relative">
+                Submit Article
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }

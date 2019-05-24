@@ -26,72 +26,74 @@ class ArticlePage extends Component {
     } else {
       return (
         <div className={this.state.article.topic}>
-          <SubHeader
-            topic={this.state.article.topic}
-            author={this.state.article.username}
-            callApi={this.callApi}
-          />
-          <div className="boxed">
-            <div className="votePosition">
-              <Voter
-                id={this.props.article_id}
-                stateVotes={this.state.article.votes}
-                comment={false}
-                loggedInUser={this.props.loggedInUser}
-              />
-              <div>
-                {" "}
-                <h1>{this.state.article.title}</h1>
-                <span>
-                  Created by{" "}
-                  <Link to={`/users/${this.state.article.author}`}>
-                    {this.state.article.author}
-                  </Link>{" "}
-                </span>
-                <span>
-                  {" "}
-                  {time_elapsed_string(this.state.article.created_at)}
-                </span>
-                <span>
-                  {" "}
-                  | Topic :
-                  <Link to={`/topic/${this.state.article.topic}`}>
-                    {" "}
-                    {ucFirst(this.state.article.topic)}
-                  </Link>
-                  <br />
-                </span>
-                <br />
-                <span> {this.state.article.body}</span>
-                <br />
-                <br />
-                <h3> Comment count : {this.state.article.comment_count}</h3>
-                <DeleteButton
-                  deleteButton={this.deleteButtonA}
+          <div className="centerArticles">
+            <SubHeader
+              topic={this.state.article.topic}
+              author={this.state.article.username}
+              callApi={this.callApi}
+            />
+            <div className="boxed">
+              <div className="votePosition">
+                <Voter
+                  id={this.props.article_id}
+                  stateVotes={this.state.article.votes}
+                  comment={false}
                   loggedInUser={this.props.loggedInUser}
-                  comment_id={this.state.article.article_id}
-                  author={this.state.article.author}
                 />
+                <div>
+                  {" "}
+                  <h1>{this.state.article.title}</h1>
+                  <span>
+                    Created by{" "}
+                    <Link to={`/users/${this.state.article.author}`}>
+                      {this.state.article.author}
+                    </Link>{" "}
+                  </span>
+                  <span>
+                    {" "}
+                    {time_elapsed_string(this.state.article.created_at)}
+                  </span>
+                  <span>
+                    {" "}
+                    | Topic :
+                    <Link to={`/topic/${this.state.article.topic}`}>
+                      {" "}
+                      {ucFirst(this.state.article.topic)}
+                    </Link>
+                    <br />
+                  </span>
+                  <br />
+                  <span> {this.state.article.body}</span>
+                  <br />
+                  <br />
+                  <h3> Comment count : {this.state.article.comment_count}</h3>
+                  <DeleteButton
+                    deleteButton={this.deleteButtonA}
+                    loggedInUser={this.props.loggedInUser}
+                    comment_id={this.state.article.article_id}
+                    author={this.state.article.author}
+                  />
+                </div>
               </div>
             </div>
+            <Comment
+              addComment={this.addComment}
+              comments={this.state.comments}
+              deleteButton={this.deleteButtonC}
+              loggedInUser={this.props.loggedInUser}
+              article_id={this.state.article.article_id}
+            />
+            <ArticleComments
+              getComments={this.getComments}
+              comments={this.state.comments}
+              p={this.state.p}
+              changePage={this.changePage}
+              deleteButton={this.deleteButtonC}
+              loggedInUser={this.props.loggedInUser}
+              total_count={this.state.article.comment_count}
+              article_id={this.state.article.article_id}
+            />
           </div>
-          <Comment
-            addComment={this.addComment}
-            comments={this.state.comments}
-            deleteButton={this.deleteButtonC}
-            loggedInUser={this.props.loggedInUser}
-            article_id={this.state.article.article_id}
-          />
-          <ArticleComments
-            getComments={this.getComments}
-            comments={this.state.comments}
-            p={this.state.p}
-            changePage={this.changePage}
-            deleteButton={this.deleteButtonC}
-            loggedInUser={this.props.loggedInUser}
-            total_count={this.state.article.comment_count}
-            article_id={this.state.article.article_id}
-          />
         </div>
       );
     }
