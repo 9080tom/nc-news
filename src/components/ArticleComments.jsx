@@ -27,7 +27,10 @@ class ArticleComments extends Component {
                     <p> {comment.body}</p>
                     <span>
                       Author :{" "}
-                      <Link to={`/users/${comment.author}`}>
+                      <Link
+                        className="text-secondary"
+                        to={`/users/${comment.author}`}
+                      >
                         {comment.author}
                       </Link>{" "}
                       Created : {time_elapsed_string(comment.created_at)}
