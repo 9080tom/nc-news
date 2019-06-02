@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "@reach/router";
 
 const ArticleLinkBar = props => (
-  <div>
+  <div className="filterleft">
     <span>Sort By </span>
     <Link
+      className="text-dark"
       to={
         props.topic
           ? `/topic/${props.topic}/top`
@@ -17,6 +18,7 @@ const ArticleLinkBar = props => (
     </Link>{" "}
     |{" "}
     <Link
+      className="text-dark"
       to={
         props.topic
           ? `/topic/${props.topic}/new`
@@ -29,6 +31,7 @@ const ArticleLinkBar = props => (
     </Link>{" "}
     |
     <Link
+      className="text-dark"
       to={
         props.topic
           ? `/topic/${props.topic}/mostDiscussed`
