@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# NC News front-end web app
 
-## Available Scripts
+[Try the app hosted on Netlify]
 
-In the project directory, you can run:
+This is my version of a front-end for Northcoders News. It is powered by my back-end hosted on Heroku
 
-### `npm start`
+Northcoders News is a social news website. Styled to work in a similar way to Reddit.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Northcoders News has articles which are created by users and divided into topics. Each article has a vote count and can be up or down voted by a user. Users can also add comments about an article. Comments can also be up or down voted. A user can also remove any comments or articles which they have added.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Built With
 
-### `npm test`
+- [Axios 0.18](https://github.com/axios/axios)
+- [Create React App](https://facebook.github.io/create-react-app/)
+- [Cypress 3](https://cypress.io)
+- [Node 12](https://nodejs.org)
+- [React 16.8.6](https://reactjs.org/)
+- [Reach Router 1.2.1](https://reach.tech/router)
+- [Cors ^2.8.5](https://enable-cors.org/)
+- [Tom-nc-news-backend]()
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Set up a copy to try out locally
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Git CLI (version >= 2)](https://git-scm.com/)
+- [Node (version >= 10.15.3)](https://nodejs.org)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Instructions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone this repo
 
-### `npm run eject`
+```bash
+git clone this repo ()
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Open project folder
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+cd nc-news
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Install dependencies
 
-## Learn More
+```bash
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Start the app locally
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```bash
+npm start
+```
