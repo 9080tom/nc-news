@@ -1,10 +1,10 @@
 # NC News front-end web app
 
-Try the app hosted on Netlify
+Try the app hosted on Netlify https://toms-nc-news.netlify.com/
 
 This is my version of a front-end for Northcoders News. It is powered by my back-end hosted on Heroku https://github.com/9080tom/BEND-NC-News
 
-Northcoders News is a social news website. Styled to work in a similar way to Reddit.
+Northcoders News is a social news website. Designed to work in a similar way to Reddit.
 
 Northcoders News has articles which are created by users and divided into topics. Each article has a vote count and can be up or down voted by a user. Users can also add comments about an article. Comments can also be up or down voted. A user can also remove any comments or articles which they have added.
 
