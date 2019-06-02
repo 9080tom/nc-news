@@ -3,6 +3,7 @@ import SearchBar from "../components/SearchBar";
 import Login from "../components/Login";
 import NcNews from "../images/logo.png";
 import { Link } from "@reach/router";
+import { navigate } from "@reach/router";
 
 const Header = props => (
   <div className="header">
@@ -25,21 +26,15 @@ const Header = props => (
         </div>
         <div className="dropdown-content">
           <div>Logged in as {props.loggedInUser.username}</div>
-          <div>
-            {" "}
-            <Link to={`/createarticle`}>
-              {" "}
-              <button>Create An Article</button>
-            </Link>
-          </div>
-          <div>
-            <Link to={`/users/${props.loggedInUser.username}`}>
-              <button>My articles</button>
-            </Link>
-          </div>
-          <div>
-            <Login loggedIn={false} />
-          </div>
+          <button onClick={() => navigate("/createarticle")}>
+            Create An Article
+          </button>
+          <button
+            onClick={() => navigate(`/users/${props.loggedInUser.username}`)}
+          >
+            My articles
+          </button>
+          <button onClick={() => navigate("/login")}>Logout</button>
         </div>
       </div>
     ) : (
