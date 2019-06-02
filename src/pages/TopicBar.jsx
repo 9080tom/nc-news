@@ -9,16 +9,18 @@ class TopicBar extends Component {
   };
   render() {
     return (
-      <div className="filter">
+      <div className="filterright">
         <span>Topics </span>
-        <Link to="/">
-          <span>All</span>
+        <Link className="text-dark" to="/">
+          All
         </Link>
         {this.state.topics.map(topic => {
           return (
             <span key={ucFirst(topic.slug)}>
               {" | "}
-              <Link to={`/topic/${topic.slug}`}>{ucFirst(topic.slug)}</Link>
+              <Link className="text-dark" to={`/topic/${topic.slug}`}>
+                {ucFirst(topic.slug)}
+              </Link>
             </span>
           );
         })}
@@ -26,6 +28,7 @@ class TopicBar extends Component {
     );
   }
   componentDidMount() {
+    console.log(this.props);
     getTopics()
       .then(({ data }) => {
         this.setState({ topics: data.topics });
