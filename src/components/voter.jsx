@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { patchArticle, patchComment } from "../components/api";
+import { patchArticle, patchComment } from "./api";
 import { Link } from "@reach/router";
 
 export class Voter extends Component {
@@ -63,10 +63,7 @@ export class Voter extends Component {
     }
   };
   handleVoteCallback = () => {
-    console.log("here");
     if (this.state.votes === 1) {
-      console.log("here");
-
       this.setState({ upClass: "triangle-up-clicked" });
     } else if (this.state.votes === -1) {
       this.setState({ downClass: "triangle-down-clicked" });
