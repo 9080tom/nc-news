@@ -45,7 +45,10 @@ class ArticlePage extends Component {
                   <h1>{this.state.article.title}</h1>
                   <span>
                     Created by{" "}
-                    <Link to={`/users/${this.state.article.author}`}>
+                    <Link
+                      className="text-secondary"
+                      to={`/users/${this.state.article.author}`}
+                    >
                       {this.state.article.author}
                     </Link>{" "}
                   </span>
@@ -56,7 +59,10 @@ class ArticlePage extends Component {
                   <span>
                     {" "}
                     | Topic :
-                    <Link to={`/topic/${this.state.article.topic}`}>
+                    <Link
+                      className="text-secondary"
+                      to={`/topic/${this.state.article.topic}`}
+                    >
                       {" "}
                       {ucFirst(this.state.article.topic)}
                     </Link>
