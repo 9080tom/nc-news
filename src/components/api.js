@@ -69,7 +69,6 @@ export const deleteArticle = id => {
 };
 
 export const postArticle = body => {
-  console.log(body);
   return axios.post(url + `articles`, body).then(({ data: { article } }) => {
     return article;
   });

@@ -28,7 +28,6 @@ class TopicBar extends Component {
     );
   }
   componentDidMount() {
-    console.log(this.props);
     getTopics()
       .then(({ data }) => {
         this.setState({ topics: data.topics });
