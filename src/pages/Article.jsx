@@ -15,16 +15,22 @@ const Article = props => (
       />
       <div>
         <Link to={`/articles/${props.article.article_id}`}>
-          <h3 className="blackLink">{props.article.title}</h3>
+          <h3 className="text-dark">{props.article.title}</h3>
         </Link>
         <div className="textLayout">
           <span>
             Created by{" "}
-            <Link to={`/users/${props.article.author}`}>
+            <Link
+              className="text-secondary"
+              to={`/users/${props.article.author}`}
+            >
               {props.article.author}
             </Link>{" "}
             {time_elapsed_string(props.article.created_at)} | Topic:{" "}
-            <Link to={`/topic/${props.article.topic}`}>
+            <Link
+              className="text-secondary"
+              to={`/topic/${props.article.topic}`}
+            >
               {ucFirst(props.article.topic)}
             </Link>{" "}
             | Comments : {props.article.comment_count}{" "}
