@@ -7,22 +7,18 @@ import TopicBar from "./TopicBar";
 export default function SubHeader(props) {
   return (
     <div className="filters" id={props.topic}>
-      <ArticleLinkBar topic={props.topic} author={props.username} />{" "}
+      <ArticleLinkBar topic={props.topic} author={props.author} />{" "}
       {props.topic && (
-        <Link to={`/topic/${props.topic}`}>
-          <h3 className="blackLink" onClick={props.callApi}>
-            {ucFirst(props.topic)}
-          </h3>{" "}
+        <Link className="text-dark" to={`/topic/${props.topic}`}>
+          <div onClick={() => props.callApi}>{ucFirst(props.topic)}</div>{" "}
         </Link>
       )}
       {props.author && (
-        <Link to={`/users/${props.author}`}>
-          <h3 className="blackLink" onClick={props.callApi}>
-            {ucFirst(props.author)}
-          </h3>{" "}
+        <Link className="text-dark" to={`/users/${props.author}`}>
+          <div onClick={() => props.callApi}>{ucFirst(props.author)}</div>{" "}
         </Link>
       )}
-      <TopicBar />
+      <TopicBar topic={props.topic} author={props.author} />
     </div>
   );
 }
