@@ -1,8 +1,8 @@
 # NC News front-end web app
 
-[Try the app hosted on Netlify]
+Try the app hosted on Netlify
 
-This is my version of a front-end for Northcoders News. It is powered by my back-end hosted on Heroku
+This is my version of a front-end for Northcoders News. It is powered by my back-end hosted on Heroku https://github.com/9080tom/BEND-NC-News
 
 Northcoders News is a social news website. Styled to work in a similar way to Reddit.
 
@@ -11,13 +11,14 @@ Northcoders News has articles which are created by users and divided into topics
 ## Built With
 
 - [Axios 0.18](https://github.com/axios/axios)
+- [Bootstrap 4.3.1](https://getbootstrap.com/)
 - [Create React App](https://facebook.github.io/create-react-app/)
 - [Cypress 3](https://cypress.io)
 - [Node 12](https://nodejs.org)
 - [React 16.8.6](https://reactjs.org/)
 - [Reach Router 1.2.1](https://reach.tech/router)
 - [Cors ^2.8.5](https://enable-cors.org/)
-- [Tom-nc-news-backend]()
+- [My BEND-NC-News](https://github.com/9080tom/BEND-NC-News.git)
 
 ## Set up a copy to try out locally
 
@@ -28,10 +29,10 @@ Northcoders News has articles which are created by users and divided into topics
 
 ### Instructions
 
-Clone this repo
+Clone down this repo
 
 ```bash
-git clone this repo ()
+git clone https://github.com/9080tom/nc-news.git
 
 ```
 
@@ -47,7 +48,7 @@ Install dependencies
 npm install
 ```
 
-Start the app locally
+Start the app
 
 ```bash
 npm start
