@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { getTopics, postArticle } from "../components/api";
 import { ucFirst } from "../components/ucFirst";
 import SubHeader from "./SubHeader";
+import { lcFirst } from "../components/lcFirst";
+import { navigate } from "@reach/router";
 
 export default class CreateArticle extends Component {
   state = {
@@ -21,23 +23,27 @@ export default class CreateArticle extends Component {
           <br />
           <div className="centerArticles">
             <form onSubmit={this.addArticle} className="createArticle">
-              <select
-                required
-                onChange={e => {
-                  this.updateTopic(e.target.value);
-                }}
-              >
+              <label className="input-label3">
                 {" "}
-                {this.state.topics === "loading" ? (
-                  <option>loading</option>
-                ) : (
-                  this.state.topics.map(topic => {
-                    return (
-                      <option key={topic.slug}>{ucFirst(topic.slug)}</option>
-                    );
-                  })
-                )}
-              </select>
+                Topics
+                <select
+                  required
+                  onChange={e => {
+                    this.updateTopic(lcFirst(e.target.value));
+                  }}
+                >
+                  {" "}
+                  {this.state.topics === "loading" ? (
+                    <option>loading</option>
+                  ) : (
+                    this.state.topics.map(topic => {
+                      return (
+                        <option key={topic.slug}>{ucFirst(topic.slug)}</option>
+                      );
+                    })
+                  )}
+                </select>
+              </label>
               <br />
               <label className="input-label2">
                 Title{" "}
@@ -87,7 +93,9 @@ export default class CreateArticle extends Component {
       topic: this.state.Topic,
       username: this.props.loggedInUser
     };
-    postArticle(body);
+    postArticle(body).then(body => {
+      navigate(`/articles/${body.article_id}`);
+    });
   };
 
   updateTitle = input => {
