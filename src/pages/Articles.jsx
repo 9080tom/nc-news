@@ -10,7 +10,7 @@ class Articles extends Component {
     order: "comment_count",
     articles: [],
     p: 1,
-    total: 0
+    total: 1
   };
   render() {
     const { articles, p } = this.state;
@@ -21,17 +21,21 @@ class Articles extends Component {
           author={this.props.username}
           callApi={this.callApi}
         />
-        <div className="centerArticles">
-          {articles.map(article => {
-            return (
-              <Article
-                loggedInUser={this.props.loggedInUser}
-                key={article.article_id}
-                article={article}
-              />
-            );
-          })}
-        </div>
+        {this.state.articles[0] === undefined ? (
+          <div>Loading....</div>
+        ) : (
+          <div className="centerArticles">
+            {articles.map(article => {
+              return (
+                <Article
+                  loggedInUser={this.props.loggedInUser}
+                  key={article.article_id}
+                  article={article}
+                />
+              );
+            })}
+          </div>
+        )}
 
         <PageChanger
           p={p}
