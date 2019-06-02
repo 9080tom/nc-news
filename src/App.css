@@ -36,8 +36,17 @@
   display: flex;
   justify-content: space-between;
   min-width: 100%;
-  min-height: 3vw;
   border-bottom: black solid;
+}
+
+.filterleft {
+  background-color: rgb(129, 129, 129);
+  border-right-style: solid;
+}
+
+.filterright {
+  background-color: rgb(129, 129, 129);
+  border-left-style: solid;
 }
 
 #coding {
@@ -113,9 +122,6 @@
   white-space: nowrap;
 }
 
-.blackLink {
-  color: black;
-}
 .textLayout {
   display: flex;
 }
@@ -138,38 +144,37 @@
 /* dropdown */
 
 .dropbtn {
-  background-color: #4caf50;
-  color: white;
-  font-size: 16px;
   border: none;
   cursor: pointer;
 }
 
 .dropdown {
+  text-align: center;
   position: relative;
-  display: inline-block;
 }
 
 .dropdown-content {
   display: none;
   right: 0;
   position: absolute;
-  background-color: rgba(220, 220, 220, 0.866);
+  background-color: rgba(220, 220, 220);
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   border: black solid;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 12px 16px;
 }
 
-.dropdown-content div {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
+.dropbtn-button {
   display: inline-block;
+  width: 100%;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: flex;
 }
 
 /* vote buttons */
@@ -257,6 +262,18 @@ button:hover {
   margin-bottom: 1.5em;
 }
 .input-label2 {
+  text-align: center;
+  background-color: rgb(129, 129, 129, 0.56);
+  height: 30px;
+  color: black;
+  font-size: 1.2em;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  margin-bottom: 1.5em;
+}
+.input-label3 {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   background-color: rgb(129, 129, 129, 0.56);
   height: 30px;
