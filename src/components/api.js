@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "https://quiet-wave-80549.herokuapp.com/api/";
+const url = " https://nc-news-tom.herokuapp.com/api/";
 
 export const getArticles = query => {
   return axios
