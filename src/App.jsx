@@ -22,7 +22,11 @@ class App extends Component {
     this.setState({ loggedInUser: user });
   };
   componentDidMount() {
-    if (localStorage.loggedInUser !== "undefined") {
+    if (
+      localStorage.loggedInUser === "undefined" ||
+      localStorage.loggedInUser === undefined
+    ) {
+    } else {
       this.logInUser(JSON.parse(localStorage.loggedInUser));
     }
   }
