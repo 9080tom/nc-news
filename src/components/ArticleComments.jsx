@@ -7,14 +7,14 @@ import { Link } from "@reach/router";
 
 class ArticleComments extends Component {
   render() {
-    if (this.props.comments.length === 0) {
+    if (this.props.comments[0] === "loading") {
       return <div>Loading....</div>;
     } else {
       return (
         <div>
           {this.props.comments.map(comment => {
             return (
-              <div id="comment" key={comment.comment_id} className="boxed">
+              <div id="comment" key={comment.comment_id} className="boxedCom">
                 <div className="votePosition">
                   <Voter
                     loggedInUser={this.props.loggedInUser}

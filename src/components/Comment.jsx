@@ -10,7 +10,7 @@ class Comment extends Component {
   render() {
     return (
       <div>
-        <div className="boxed">
+        <div className="boxedCom">
           <form id="form" onSubmit={this.onSubmit}>
             <textarea
               className="commentBox"

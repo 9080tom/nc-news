@@ -3,7 +3,12 @@ import React from "react";
 const PageChanger = props => {
   const { p } = props;
   const numButs = [];
-  const pageTotal = Math.ceil(props.total / 10);
+  let pageTotal;
+
+  if (props.total === 0 || props.total === "0") {
+    pageTotal = 1;
+  } else pageTotal = Math.ceil(props.total / 10);
+  console.log(pageTotal, props);
   for (let i = 1; i <= pageTotal; i++) {
     numButs.push(i);
   }

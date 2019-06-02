@@ -17,7 +17,7 @@ import { DeleteButton } from "../components/DeleteButton";
 class ArticlePage extends Component {
   state = {
     article: {},
-    comments: [],
+    comments: ["loading"],
     p: 1
   };
   render() {
@@ -32,7 +32,7 @@ class ArticlePage extends Component {
               author={this.state.article.username}
               callApi={this.callApi}
             />
-            <div className="boxed">
+            <div className="boxedCom">
               <div className="votePosition">
                 <Voter
                   id={this.props.article_id}

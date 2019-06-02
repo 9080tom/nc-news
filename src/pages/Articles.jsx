@@ -10,7 +10,7 @@ class Articles extends Component {
     order: "comment_count",
     articles: [],
     p: 1,
-    total: 1
+    total: 0
   };
   render() {
     const { articles, p } = this.state;
